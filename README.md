@@ -1,1 +1,1 @@
-# monocloud-users-backend-js
+# MonoCloud Users Backend JavaScript SDK
