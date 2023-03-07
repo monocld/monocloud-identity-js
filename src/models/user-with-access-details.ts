@@ -41,28 +41,28 @@ export interface UserWithAccessDetails {
   private_data: { [key: string]: any };
   /**
    * List of registered emails of user.
-   * @type {Array<UserEmail>}
+   * @type {UserEmail[]}
    * @memberof UserWithAccessDetails
    */
-  emails: Array<UserEmail>;
+  emails: UserEmail[];
   /**
    * List of registered phones of user.
-   * @type {Array<UserPhone>}
+   * @type {UserPhone[]}
    * @memberof UserWithAccessDetails
    */
-  phone_numbers: Array<UserPhone>;
+  phone_numbers: UserPhone[];
   /**
    * List of registered usernames of user.
-   * @type {Array<UserUsername>}
+   * @type {UserUsername[]}
    * @memberof UserWithAccessDetails
    */
-  usernames: Array<UserUsername>;
+  usernames: UserUsername[];
   /**
    * List of registered idps of user.
-   * @type {Array<UserIdP>}
+   * @type {UserIdP[]}
    * @memberof UserWithAccessDetails
    */
-  idps: Array<UserIdP>;
+  idps: UserIdP[];
   /**
    * Specifies the creation time of the user (in Epoch).
    * @type {number}

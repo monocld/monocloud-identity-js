@@ -21,16 +21,16 @@ export interface UserEmail {
   primary: boolean;
   /**
    * A list of identity providers the email is connected to.
-   * @type {Array<IDPs>}
+   * @type {IDPs[]}
    * @memberof UserEmail
    */
-  idps: Array<IDPs>;
+  idps: IDPs[];
   /**
    * A list of authentication methods the email is connected to.
-   * @type {Array<AuthenticationMethods>}
+   * @type {AuthenticationMethods[]}
    * @memberof UserEmail
    */
-  authentication_methods: Array<AuthenticationMethods>;
+  authentication_methods: AuthenticationMethods[];
   /**
    * Specifies whether the email is verified or not.
    * @type {boolean}

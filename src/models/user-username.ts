@@ -21,16 +21,16 @@ export interface UserUsername {
   primary: boolean;
   /**
    * A list of identity providers the username is connected to.
-   * @type {Array<IDPs>}
+   * @type {IDPs[]}
    * @memberof UserUsername
    */
-  idps: Array<IDPs>;
+  idps: IDPs[];
   /**
    * A list of authentication methods the username is connected to.
-   * @type {Array<AuthenticationMethods>}
+   * @type {AuthenticationMethods[]}
    * @memberof UserUsername
    */
-  authentication_methods: Array<AuthenticationMethods>;
+  authentication_methods: AuthenticationMethods[];
   /**
    * The username.
    * @type {string}

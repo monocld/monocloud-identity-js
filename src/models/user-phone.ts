@@ -21,16 +21,16 @@ export interface UserPhone {
   primary: boolean;
   /**
    * A list of identity providers the phone is connected to.
-   * @type {Array<IDPs>}
+   * @type {IDPs[]}
    * @memberof UserPhone
    */
-  idps: Array<IDPs>;
+  idps: IDPs[];
   /**
    * A list of authentication methods the phone is connected to.
-   * @type {Array<AuthenticationMethods>}
+   * @type {AuthenticationMethods[]}
    * @memberof UserPhone
    */
-  authentication_methods: Array<AuthenticationMethods>;
+  authentication_methods: AuthenticationMethods[];
   /**
    * Specifies whether the phone is verified or not.
    * @type {boolean}

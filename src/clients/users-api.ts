@@ -98,7 +98,7 @@ export class UsersClient extends MonoCloudClientBase {
    * @summary Get summary of all Users.
    * @param {number} [page]
    * @param {number} [size]
-   * @returns Array&lt;UserSummary&gt; - Success
+   * @returns UserSummary[] - Success
    * @throws {MonoCloudException}
    * @memberof UsersClient
    *
@@ -106,7 +106,7 @@ export class UsersClient extends MonoCloudClientBase {
   public getAllUsers(
     page?: number,
     size?: number
-  ): Promise<MonoCloudResponse<Array<UserSummary>>> {
+  ): Promise<MonoCloudResponse<UserSummary[]>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
     const url = `/v1/users`;
@@ -123,7 +123,7 @@ export class UsersClient extends MonoCloudClientBase {
       request.params.size = String(size);
     }
 
-    return this.processRequest<Array<UserSummary>>(request);
+    return this.processRequest<UserSummary[]>(request);
   }
 
   /**

@@ -29,28 +29,28 @@ export interface UserSummary {
   claims: { [key: string]: any };
   /**
    * List of registered emails of user.
-   * @type {Array<UserEmail>}
+   * @type {UserEmail[]}
    * @memberof UserSummary
    */
-  emails: Array<UserEmail>;
+  emails: UserEmail[];
   /**
    * List of registered phones of user.
-   * @type {Array<UserPhone>}
+   * @type {UserPhone[]}
    * @memberof UserSummary
    */
-  phone_numbers: Array<UserPhone>;
+  phone_numbers: UserPhone[];
   /**
    * List of registered usernames of user.
-   * @type {Array<UserUsername>}
+   * @type {UserUsername[]}
    * @memberof UserSummary
    */
-  usernames: Array<UserUsername>;
+  usernames: UserUsername[];
   /**
    * List of registered idps of user.
-   * @type {Array<UserIdPSummary>}
+   * @type {UserIdPSummary[]}
    * @memberof UserSummary
    */
-  idps: Array<UserIdPSummary>;
+  idps: UserIdPSummary[];
   /**
    * Specifies the creation time of the user (in Epoch).
    * @type {number}
