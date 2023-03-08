@@ -15,7 +15,7 @@ export class UsersClient extends MonoCloudClientBase {
   public deleteUser(userId: string): Promise<MonoCloudResponse<null>> {
     const request: AxiosRequestConfig = { method: 'DELETE' };
 
-    const url = `/v1/users/{userId}`.replace(
+    const url = `/users/{userId}`.replace(
       `{${'userId'}}`,
       encodeURIComponent(String(userId))
     );
@@ -37,7 +37,7 @@ export class UsersClient extends MonoCloudClientBase {
   public disableUser(userId: string): Promise<MonoCloudResponse<User>> {
     const request: AxiosRequestConfig = { method: 'POST' };
 
-    const url = `/v1/users/{userId}/disable`.replace(
+    const url = `/users/{userId}/disable`.replace(
       `{${'userId'}}`,
       encodeURIComponent(String(userId))
     );
@@ -59,7 +59,7 @@ export class UsersClient extends MonoCloudClientBase {
   public enableUser(userId: string): Promise<MonoCloudResponse<User>> {
     const request: AxiosRequestConfig = { method: 'POST' };
 
-    const url = `/v1/users/{userId}/enable`.replace(
+    const url = `/users/{userId}/enable`.replace(
       `{${'userId'}}`,
       encodeURIComponent(String(userId))
     );
@@ -83,7 +83,7 @@ export class UsersClient extends MonoCloudClientBase {
   ): Promise<MonoCloudResponse<UserWithAccessDetails>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
-    const url = `/v1/users/{userId}`.replace(
+    const url = `/users/{userId}`.replace(
       `{${'userId'}}`,
       encodeURIComponent(String(userId))
     );
@@ -109,7 +109,7 @@ export class UsersClient extends MonoCloudClientBase {
   ): Promise<MonoCloudResponse<UserSummary[]>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
-    const url = `/v1/users`;
+    const url = `/users`;
 
     request.url = url;
 
@@ -140,7 +140,7 @@ export class UsersClient extends MonoCloudClientBase {
   ): Promise<MonoCloudResponse<{ [key: string]: any }>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
-    const url = `/v1/users/{userId}/private_data`.replace(
+    const url = `/users/{userId}/private_data`.replace(
       `{${'userId'}}`,
       encodeURIComponent(String(userId))
     );
@@ -164,7 +164,7 @@ export class UsersClient extends MonoCloudClientBase {
   ): Promise<MonoCloudResponse<{ [key: string]: any }>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
-    const url = `/v1/users/{userId}/public_data`.replace(
+    const url = `/users/{userId}/public_data`.replace(
       `{${'userId'}}`,
       encodeURIComponent(String(userId))
     );
@@ -190,7 +190,7 @@ export class UsersClient extends MonoCloudClientBase {
   ): Promise<MonoCloudResponse<User>> {
     const request: AxiosRequestConfig = { method: 'POST' };
 
-    const url = `/v1/users/{userId}/emails/{identifierId}/primary`
+    const url = `/users/{userId}/emails/{identifierId}/primary`
       .replace(`{${'userId'}}`, encodeURIComponent(String(userId)))
       .replace(`{${'identifierId'}}`, encodeURIComponent(String(identifierId)));
 
@@ -215,7 +215,7 @@ export class UsersClient extends MonoCloudClientBase {
   ): Promise<MonoCloudResponse<User>> {
     const request: AxiosRequestConfig = { method: 'POST' };
 
-    const url = `/v1/users/{userId}/phones/{identifierId}/primary`
+    const url = `/users/{userId}/phones/{identifierId}/primary`
       .replace(`{${'userId'}}`, encodeURIComponent(String(userId)))
       .replace(`{${'identifierId'}}`, encodeURIComponent(String(identifierId)));
 
@@ -240,7 +240,7 @@ export class UsersClient extends MonoCloudClientBase {
   ): Promise<MonoCloudResponse<{ [key: string]: any }>> {
     const request: AxiosRequestConfig = { method: 'POST' };
 
-    const url = `/v1/users/{userId}/private_data`.replace(
+    const url = `/users/{userId}/private_data`.replace(
       `{${'userId'}}`,
       encodeURIComponent(String(userId))
     );
@@ -268,7 +268,7 @@ export class UsersClient extends MonoCloudClientBase {
   ): Promise<MonoCloudResponse<{ [key: string]: any }>> {
     const request: AxiosRequestConfig = { method: 'POST' };
 
-    const url = `/v1/users/{userId}/public_data`.replace(
+    const url = `/users/{userId}/public_data`.replace(
       `{${'userId'}}`,
       encodeURIComponent(String(userId))
     );
