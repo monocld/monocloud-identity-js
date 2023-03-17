@@ -2,15 +2,13 @@ import { AxiosInstance } from 'axios';
 import { MonoCloudConfig } from '@monocloud/sdk-js-core';
 import { UsersClient } from './clients';
 
-export class MonoCloudUsersBackendClient {
-  public readonly users: UsersClient;
-
+export class MonoCloudUsersBackendClient extends UsersClient {
   private constructor(
     options: MonoCloudConfig,
     baseDomain: string,
     instance?: AxiosInstance
   ) {
-    this.users = new UsersClient(options, `https://${baseDomain}`, instance);
+    super(options, `https://${baseDomain}`, instance);
   }
 
   public static init(
