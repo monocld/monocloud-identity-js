@@ -1,6 +1,6 @@
 {
   "name": "@monocloud/users-backend-js",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "MonoCloud Users Backend JavaScript SDK",
   "keywords": [
     "monocloud",
@@ -35,24 +35,24 @@
     "lint": "npm run lint:es && npm run lint:ts"
   },
   "dependencies": {
-    "@monocloud/sdk-js-core": "0.0.5",
-    "axios": "1.3.4"
+    "@monocloud/sdk-js-core": "0.0.6",
+    "axios": "1.3.5"
   },
   "devDependencies": {
     "@types/flat": "5.0.2",
-    "@types/node": "^16.18.12",
-    "@typescript-eslint/eslint-plugin": "5.54.1",
-    "@typescript-eslint/parser": "5.54.1",
-    "eslint": "8.35.0",
+    "@types/node": "^16.18.23",
+    "@typescript-eslint/eslint-plugin": "5.57.1",
+    "@typescript-eslint/parser": "5.57.1",
+    "eslint": "8.38.0",
     "eslint-config-airbnb-base": "15.0.0",
     "eslint-config-airbnb-typescript": "17.0.0",
-    "eslint-config-prettier": "8.7.0",
+    "eslint-config-prettier": "8.8.0",
     "eslint-plugin-import": "2.27.5",
     "eslint-plugin-prettier": "4.2.1",
     "eslint-plugin-unused-imports": "2.0.0",
-    "prettier": "2.8.4",
-    "rimraf": "4.3.1",
-    "typescript": "4.9.5"
+    "prettier": "2.8.7",
+    "rimraf": "4.4.1",
+    "typescript": "5.0.4"
   },
   "engines": {
     "node": ">= 11.0.0"
