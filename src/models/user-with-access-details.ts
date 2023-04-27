@@ -105,4 +105,10 @@ export interface UserWithAccessDetails {
    * @memberof UserWithAccessDetails
    */
   last_sign_in_attempt?: number | null;
+  /**
+   * Specifies whether the user has been locked out.
+   * @type {boolean}
+   * @memberof UserWithAccessDetails
+   */
+  blocked: boolean;
 }

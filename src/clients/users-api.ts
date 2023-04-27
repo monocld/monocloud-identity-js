@@ -1,6 +1,12 @@
 import { AxiosRequestConfig } from 'axios';
 import { MonoCloudClientBase, MonoCloudResponse } from '@monocloud/sdk-js-core';
-import { User, UserSummary, UserWithAccessDetails } from '../models';
+import {
+  UnblockIpRequest,
+  User,
+  UserIpAccessDetails,
+  UserSummary,
+  UserWithAccessDetails,
+} from '../models';
 
 export class UsersClient extends MonoCloudClientBase {
   /**
@@ -91,6 +97,44 @@ export class UsersClient extends MonoCloudClientBase {
     request.url = url;
 
     return this.processRequest<UserWithAccessDetails>(request);
+  }
+
+  /**
+   *
+   * @summary Get the list of blocked ips for the user.
+   * @param {string} userId User Id
+   * @param {number} [page]
+   * @param {number} [size]
+   * @returns UserIpAccessDetails[] - Success
+   * @throws {MonoCloudException}
+   * @memberof UsersClient
+   *
+   */
+  public getAllBlockedIps(
+    userId: string,
+    page?: number,
+    size?: number
+  ): Promise<MonoCloudResponse<UserIpAccessDetails[]>> {
+    const request: AxiosRequestConfig = { method: 'GET' };
+
+    const url = `/users/{userId}/blocked_ips`.replace(
+      `{${'userId'}}`,
+      encodeURIComponent(String(userId))
+    );
+
+    request.url = url;
+
+    request.params = {};
+
+    if (page !== undefined && page !== null) {
+      request.params.page = String(page);
+    }
+
+    if (size !== undefined && size !== null) {
+      request.params.size = String(size);
+    }
+
+    return this.processRequest<UserIpAccessDetails[]>(request);
   }
 
   /**
@@ -218,6 +262,56 @@ export class UsersClient extends MonoCloudClientBase {
     const url = `/users/{userId}/phones/{identifierId}/primary`
       .replace(`{${'userId'}}`, encodeURIComponent(String(userId)))
       .replace(`{${'identifierId'}}`, encodeURIComponent(String(identifierId)));
+
+    request.url = url;
+
+    return this.processRequest<User>(request);
+  }
+
+  /**
+   *
+   * @summary Unblock the ip address.
+   * @param {string} userId User Id
+   * @param {UnblockIpRequest} unblockIpRequest The unblock ip request
+   * @returns User - Success
+   * @throws {MonoCloudException}
+   * @memberof UsersClient
+   *
+   */
+  public unblockIp(
+    userId: string,
+    unblockIpRequest: UnblockIpRequest
+  ): Promise<MonoCloudResponse<User>> {
+    const request: AxiosRequestConfig = { method: 'POST' };
+
+    const url = `/users/{userId}/blocked_ips/unblock`.replace(
+      `{${'userId'}}`,
+      encodeURIComponent(String(userId))
+    );
+
+    request.url = url;
+
+    request.data = JSON.stringify(unblockIpRequest);
+
+    return this.processRequest<User>(request);
+  }
+
+  /**
+   *
+   * @summary Unblock a user.
+   * @param {string} userId User Id
+   * @returns User - Success
+   * @throws {MonoCloudException}
+   * @memberof UsersClient
+   *
+   */
+  public unblockUser(userId: string): Promise<MonoCloudResponse<User>> {
+    const request: AxiosRequestConfig = { method: 'POST' };
+
+    const url = `/users/{userId}/unblock`.replace(
+      `{${'userId'}}`,
+      encodeURIComponent(String(userId))
+    );
 
     request.url = url;
 
