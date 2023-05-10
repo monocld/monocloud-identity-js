@@ -1,5 +1,5 @@
-import { AuthenticationMethods } from './authentication-methods';
-import { IDPs } from './idps';
+import { Authenticators } from './authenticators';
+import { IdPs } from './id-ps';
 
 /**
  * The User Phone response class
@@ -21,16 +21,16 @@ export interface UserPhone {
   primary: boolean;
   /**
    * A list of identity providers the phone is connected to.
-   * @type {IDPs[]}
+   * @type {IdPs[]}
    * @memberof UserPhone
    */
-  idps: IDPs[];
+  idps: IdPs[];
   /**
-   * A list of authentication methods the phone is connected to.
-   * @type {AuthenticationMethods[]}
+   * A list of authenticators the phone is connected to.
+   * @type {Authenticators[]}
    * @memberof UserPhone
    */
-  authentication_methods: AuthenticationMethods[];
+  authenticators: Authenticators[];
   /**
    * Specifies whether the phone is verified or not.
    * @type {boolean}

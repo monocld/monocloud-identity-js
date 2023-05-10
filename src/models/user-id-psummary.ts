@@ -1,4 +1,4 @@
-import { ExternalIDPs } from './external-idps';
+import { ExternalAuthenticators } from './external-authenticators';
 
 /**
  * The User IDP Summary response class
@@ -7,11 +7,11 @@ import { ExternalIDPs } from './external-idps';
  */
 export interface UserIdPSummary {
   /**
-   * Specifies the IDP name.
-   * @type {ExternalIDPs}
+   * Specifies the External Authenticator.
+   * @type {ExternalAuthenticators}
    * @memberof UserIdPSummary
    */
-  idp: ExternalIDPs;
+  authenticator: ExternalAuthenticators;
   /**
    * Specifies the idp user Id.
    * @type {string}

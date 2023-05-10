@@ -4,11 +4,19 @@
  * @enum {string}
  */
 
-export const IDPs = {
+export const Authenticators = {
   /**
    *
    */
-  MonoCloud: 'mono_cloud',
+  Password: 'password',
+  /**
+   *
+   */
+  Email: 'email',
+  /**
+   *
+   */
+  Phone: 'phone',
   /**
    *
    */
@@ -24,4 +32,5 @@ export const IDPs = {
 } as const;
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
-export type IDPs = (typeof IDPs)[keyof typeof IDPs];
+export type Authenticators =
+  (typeof Authenticators)[keyof typeof Authenticators];

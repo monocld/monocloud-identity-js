@@ -1,5 +1,5 @@
-import { AuthenticationMethods } from './authentication-methods';
-import { IDPs } from './idps';
+import { Authenticators } from './authenticators';
+import { IdPs } from './id-ps';
 
 /**
  * The User Username response class
@@ -21,16 +21,16 @@ export interface UserUsername {
   primary: boolean;
   /**
    * A list of identity providers the username is connected to.
-   * @type {IDPs[]}
+   * @type {IdPs[]}
    * @memberof UserUsername
    */
-  idps: IDPs[];
+  idps: IdPs[];
   /**
-   * A list of authentication methods the username is connected to.
-   * @type {AuthenticationMethods[]}
+   * A list of authenticators the username is connected to.
+   * @type {Authenticators[]}
    * @memberof UserUsername
    */
-  authentication_methods: AuthenticationMethods[];
+  authenticators: Authenticators[];
   /**
    * The username.
    * @type {string}

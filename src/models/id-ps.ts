@@ -4,7 +4,11 @@
  * @enum {string}
  */
 
-export const ExternalIDPs = {
+export const IdPs = {
+  /**
+   *
+   */
+  MonoCloud: 'mono_cloud',
   /**
    *
    */
@@ -20,4 +24,4 @@ export const ExternalIDPs = {
 } as const;
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
-export type ExternalIDPs = (typeof ExternalIDPs)[keyof typeof ExternalIDPs];
+export type IdPs = (typeof IdPs)[keyof typeof IdPs];

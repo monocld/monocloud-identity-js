@@ -1,5 +1,5 @@
-import { AuthenticationMethods } from './authentication-methods';
-import { IDPs } from './idps';
+import { Authenticators } from './authenticators';
+import { IdPs } from './id-ps';
 
 /**
  * The User Email response class
@@ -21,16 +21,16 @@ export interface UserEmail {
   primary: boolean;
   /**
    * A list of identity providers the email is connected to.
-   * @type {IDPs[]}
+   * @type {IdPs[]}
    * @memberof UserEmail
    */
-  idps: IDPs[];
+  idps: IdPs[];
   /**
-   * A list of authentication methods the email is connected to.
-   * @type {AuthenticationMethods[]}
+   * A list of authenticators the email is connected to.
+   * @type {Authenticators[]}
    * @memberof UserEmail
    */
-  authentication_methods: AuthenticationMethods[];
+  authenticators: Authenticators[];
   /**
    * Specifies whether the email is verified or not.
    * @type {boolean}
