@@ -52,12 +52,6 @@ export interface UserWithAccessDetails {
    */
   phone_numbers: UserPhone[];
   /**
-   * List of registered usernames of user.
-   * @type {UserUsername[]}
-   * @memberof UserWithAccessDetails
-   */
-  usernames: UserUsername[];
-  /**
    * List of registered idps of user.
    * @type {UserIdP[]}
    * @memberof UserWithAccessDetails
@@ -75,6 +69,12 @@ export interface UserWithAccessDetails {
    * @memberof UserWithAccessDetails
    */
   last_updated: number;
+  /**
+   * Registered username of the user.
+   * @type {UserUsername}
+   * @memberof UserWithAccessDetails
+   */
+  username?: UserUsername | null;
   /**
    * Specifies whether the user has a password.
    * @type {boolean}

@@ -52,12 +52,6 @@ export interface User {
    */
   phone_numbers: UserPhone[];
   /**
-   * List of registered usernames of user.
-   * @type {UserUsername[]}
-   * @memberof User
-   */
-  usernames: UserUsername[];
-  /**
    * List of registered idps of user.
    * @type {UserIdP[]}
    * @memberof User
@@ -75,6 +69,12 @@ export interface User {
    * @memberof User
    */
   last_updated: number;
+  /**
+   * Registered username of the user.
+   * @type {UserUsername}
+   * @memberof User
+   */
+  username?: UserUsername | null;
   /**
    * Specifies whether the user has a password.
    * @type {boolean}

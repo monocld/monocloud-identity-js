@@ -14,12 +14,6 @@ export interface UserUsername {
    */
   id: string;
   /**
-   * Specifies whether the username is the primary username of the user.
-   * @type {boolean}
-   * @memberof UserUsername
-   */
-  primary: boolean;
-  /**
    * A list of identity providers the username is connected to.
    * @type {IdPs[]}
    * @memberof UserUsername

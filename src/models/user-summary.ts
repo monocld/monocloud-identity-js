@@ -40,12 +40,6 @@ export interface UserSummary {
    */
   phone_numbers: UserPhone[];
   /**
-   * List of registered usernames of user.
-   * @type {UserUsername[]}
-   * @memberof UserSummary
-   */
-  usernames: UserUsername[];
-  /**
    * List of registered idps of user.
    * @type {UserIdPSummary[]}
    * @memberof UserSummary
@@ -63,6 +57,12 @@ export interface UserSummary {
    * @memberof UserSummary
    */
   last_updated: number;
+  /**
+   * Registered username of the user.
+   * @type {UserUsername}
+   * @memberof UserSummary
+   */
+  username?: UserUsername | null;
   /**
    * Specifies whether the user has a password.
    * @type {boolean}
