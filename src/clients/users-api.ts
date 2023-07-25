@@ -181,7 +181,7 @@ export class UsersClient extends MonoCloudClientBase {
    */
   public getPrivateData(
     userId: string
-  ): Promise<MonoCloudResponse<{ [key: string]: any }>> {
+  ): Promise<MonoCloudResponse<Record<string, any>>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
     const url = `/users/{userId}/private_data`.replace(
@@ -191,7 +191,7 @@ export class UsersClient extends MonoCloudClientBase {
 
     request.url = url;
 
-    return this.processRequest<{ [key: string]: any }>(request);
+    return this.processRequest<Record<string, any>>(request);
   }
 
   /**
@@ -205,7 +205,7 @@ export class UsersClient extends MonoCloudClientBase {
    */
   public getPublicData(
     userId: string
-  ): Promise<MonoCloudResponse<{ [key: string]: any }>> {
+  ): Promise<MonoCloudResponse<Record<string, any>>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
     const url = `/users/{userId}/public_data`.replace(
@@ -215,7 +215,7 @@ export class UsersClient extends MonoCloudClientBase {
 
     request.url = url;
 
-    return this.processRequest<{ [key: string]: any }>(request);
+    return this.processRequest<Record<string, any>>(request);
   }
 
   /**
@@ -330,8 +330,8 @@ export class UsersClient extends MonoCloudClientBase {
    */
   public updatePrivateData(
     userId: string,
-    requestBody: { [key: string]: any }
-  ): Promise<MonoCloudResponse<{ [key: string]: any }>> {
+    requestBody: Record<string, any>
+  ): Promise<MonoCloudResponse<Record<string, any>>> {
     const request: AxiosRequestConfig = { method: 'POST' };
 
     const url = `/users/{userId}/private_data`.replace(
@@ -343,7 +343,7 @@ export class UsersClient extends MonoCloudClientBase {
 
     request.data = JSON.stringify(requestBody);
 
-    return this.processRequest<{ [key: string]: any }>(request);
+    return this.processRequest<Record<string, any>>(request);
   }
 
   /**
@@ -358,8 +358,8 @@ export class UsersClient extends MonoCloudClientBase {
    */
   public updatePublicData(
     userId: string,
-    requestBody: { [key: string]: any }
-  ): Promise<MonoCloudResponse<{ [key: string]: any }>> {
+    requestBody: Record<string, any>
+  ): Promise<MonoCloudResponse<Record<string, any>>> {
     const request: AxiosRequestConfig = { method: 'POST' };
 
     const url = `/users/{userId}/public_data`.replace(
@@ -371,6 +371,6 @@ export class UsersClient extends MonoCloudClientBase {
 
     request.data = JSON.stringify(requestBody);
 
-    return this.processRequest<{ [key: string]: any }>(request);
+    return this.processRequest<Record<string, any>>(request);
   }
 }

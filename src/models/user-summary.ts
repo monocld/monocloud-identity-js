@@ -26,7 +26,7 @@ export interface UserSummary {
    * @type {{ [key: string]: any; }}
    * @memberof UserSummary
    */
-  claims: { [key: string]: any };
+  claims: Record<string, any>;
   /**
    * List of registered emails of user.
    * @type {UserEmail[]}

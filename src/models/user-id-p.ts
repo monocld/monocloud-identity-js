@@ -23,5 +23,5 @@ export interface UserIdP {
    * @type {{ [key: string]: any; }}
    * @memberof UserIdP
    */
-  claims: { [key: string]: any };
+  claims: Record<string, any>;
 }

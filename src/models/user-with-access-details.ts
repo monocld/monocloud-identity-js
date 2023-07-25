@@ -26,19 +26,19 @@ export interface UserWithAccessDetails {
    * @type {{ [key: string]: any; }}
    * @memberof UserWithAccessDetails
    */
-  claims: { [key: string]: any };
+  claims: Record<string, any>;
   /**
    * User Public Data.
    * @type {{ [key: string]: any; }}
    * @memberof UserWithAccessDetails
    */
-  public_data: { [key: string]: any };
+  public_data: Record<string, any>;
   /**
    * Custom Private Data.
    * @type {{ [key: string]: any; }}
    * @memberof UserWithAccessDetails
    */
-  private_data: { [key: string]: any };
+  private_data: Record<string, any>;
   /**
    * List of registered emails of user.
    * @type {UserEmail[]}
