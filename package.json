@@ -1,6 +1,6 @@
 {
   "name": "@monocloud/users-backend-js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "MonoCloud Users Backend JavaScript SDK",
   "keywords": [
     "monocloud",
@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@types/flat": "5.0.2",
-    "@types/node": "^20.4.4",
+    "@types/node": "20.4.5",
     "@typescript-eslint/eslint-plugin": "6.2.0",
     "@typescript-eslint/parser": "6.2.0",
     "eslint": "8.45.0",
