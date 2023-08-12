@@ -5,7 +5,7 @@
  */
 export interface UserPrivateData {
   /**
-   * Custom Private Data.
+   * User\'s Private Data
    * @type {{ [key: string]: any; }}
    * @memberof UserPrivateData
    */

@@ -10,61 +10,61 @@ import { UserUsername } from './user-username';
  */
 export interface User {
   /**
-   * Unique identifier of the user.
+   * Unique identifier of the user
    * @type {string}
    * @memberof User
    */
   user_id: string;
   /**
-   * Specifies whether the account has been disabled.
+   * Specifies whether the account has been disabled
    * @type {boolean}
    * @memberof User
    */
   disabled: boolean;
   /**
-   * User Claims.
+   * User\'s Claims
    * @type {{ [key: string]: any; }}
    * @memberof User
    */
   claims: Record<string, any>;
   /**
-   * User Public Data.
+   * User\' Public Data
    * @type {{ [key: string]: any; }}
    * @memberof User
    */
   public_data: Record<string, any>;
   /**
-   * Custom Private Data.
+   * User\'s Private Data
    * @type {{ [key: string]: any; }}
    * @memberof User
    */
   private_data: Record<string, any>;
   /**
-   * List of registered emails of user.
+   * List of registered emails of user
    * @type {UserEmail[]}
    * @memberof User
    */
   emails: UserEmail[];
   /**
-   * List of registered phones of user.
+   * List of registered phones of user
    * @type {UserPhone[]}
    * @memberof User
    */
   phone_numbers: UserPhone[];
   /**
-   * List of registered idps of user.
+   * List of registered idps of user
    * @type {UserIdP[]}
    * @memberof User
    */
   idps: UserIdP[];
   /**
-   * Specifies the creation time of the user (in Epoch).
+   * Specifies the creation time of the user (in Epoch)
    * @type {number}
    * @memberof User
    */
   creation_time: number;
   /**
-   * Specifies the last update time of the user (in Epoch).
+   * Specifies the last update time of the user (in Epoch)
    * @type {number}
    * @memberof User
    */

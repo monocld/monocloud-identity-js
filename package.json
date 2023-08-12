@@ -1,6 +1,6 @@
 {
   "name": "@monocloud/users-backend-js",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "MonoCloud Users Backend JavaScript SDK",
   "keywords": [
     "monocloud",

@@ -5,7 +5,7 @@
  */
 export interface UpdatePrivateDataRequest {
   /**
-   * The private data of the user.
+   * User\'s Private Data
    * @type {{ [key: string]: any; }}
    * @memberof UpdatePrivateDataRequest
    */

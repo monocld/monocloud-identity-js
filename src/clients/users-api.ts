@@ -18,7 +18,7 @@ export class UsersClient extends MonoCloudClientBase {
    * @summary Get all users
    * @param {number} [page]
    * @param {number} [size]
-   * @returns UserSummary[] - Success
+   * @returns UserSummary[] - Successfully retrieved users
    * @throws {MonoCloudException}
    * @memberof UsersClient
    *
@@ -50,7 +50,7 @@ export class UsersClient extends MonoCloudClientBase {
    *
    * @summary Get a user
    * @param {string} userId User Id
-   * @returns UserWithAccessDetails - Success
+   * @returns UserWithAccessDetails - Successfully retrieved the user
    * @throws {MonoCloudException}
    * @memberof UsersClient
    *
@@ -74,7 +74,7 @@ export class UsersClient extends MonoCloudClientBase {
    *
    * @summary Delete a user
    * @param {string} userId User Id
-   * @returns No Content
+   * @returns Successfully deleted the user
    * @throws {MonoCloudException}
    * @memberof UsersClient
    *
@@ -96,7 +96,7 @@ export class UsersClient extends MonoCloudClientBase {
    *
    * @summary Enable a user
    * @param {string} userId User Id
-   * @returns User - Success
+   * @returns User - Successfully enabled the user
    * @throws {MonoCloudException}
    * @memberof UsersClient
    *
@@ -118,7 +118,7 @@ export class UsersClient extends MonoCloudClientBase {
    *
    * @summary Disable a user
    * @param {string} userId User Id
-   * @returns User - Success
+   * @returns User - Successfully disabled the user
    * @throws {MonoCloudException}
    * @memberof UsersClient
    *
@@ -140,7 +140,7 @@ export class UsersClient extends MonoCloudClientBase {
    *
    * @summary Unblock a user
    * @param {string} userId User Id
-   * @returns User - Success
+   * @returns User - Successfully unblocked the user
    * @throws {MonoCloudException}
    * @memberof UsersClient
    *
@@ -163,7 +163,7 @@ export class UsersClient extends MonoCloudClientBase {
    * @summary Set a user\'s primary email
    * @param {string} userId User Id
    * @param {string} identifierId The Id of the email to be set a primary.
-   * @returns User - Success
+   * @returns User - Successfully updated user\&#39;s primary email
    * @throws {MonoCloudException}
    * @memberof UsersClient
    *
@@ -191,7 +191,7 @@ export class UsersClient extends MonoCloudClientBase {
    * @summary Set a user\'s primary phone
    * @param {string} userId User Id
    * @param {string} identifierId The Id of the phone to be set a primary.
-   * @returns User - Success
+   * @returns User - Successfully updated user\&#39;s primary phone
    * @throws {MonoCloudException}
    * @memberof UsersClient
    *
@@ -218,7 +218,7 @@ export class UsersClient extends MonoCloudClientBase {
    *
    * @summary Get a user\'s private data
    * @param {string} userId User Id
-   * @returns UserPrivateData - Success
+   * @returns UserPrivateData - Successfully retrieved user\&#39;s private data
    * @throws {MonoCloudException}
    * @memberof UsersClient
    *
@@ -243,7 +243,7 @@ export class UsersClient extends MonoCloudClientBase {
    * @summary Update a user\'s private data
    * @param {string} userId User Id
    * @param {UpdatePrivateDataRequest} updatePrivateDataRequest Data to be updated
-   * @returns UserPrivateData - Success
+   * @returns UserPrivateData - Successfully updated the user\&#39;s private data
    * @throws {MonoCloudException}
    * @memberof UsersClient
    *
@@ -270,7 +270,7 @@ export class UsersClient extends MonoCloudClientBase {
    *
    * @summary Get a user\'s public data
    * @param {string} userId User Id
-   * @returns UserPublicData - Success
+   * @returns UserPublicData - Successfully retrieved user\&#39;s public data
    * @throws {MonoCloudException}
    * @memberof UsersClient
    *
@@ -295,7 +295,7 @@ export class UsersClient extends MonoCloudClientBase {
    * @summary Update a user\'s public data
    * @param {string} userId User Id
    * @param {UpdatePublicDataRequest} updatePublicDataRequest Data to be updated
-   * @returns UserPublicData - Success
+   * @returns UserPublicData - Successfully updated the user\&#39;s public data
    * @throws {MonoCloudException}
    * @memberof UsersClient
    *
@@ -324,7 +324,7 @@ export class UsersClient extends MonoCloudClientBase {
    * @param {string} userId User Id
    * @param {number} [page]
    * @param {number} [size]
-   * @returns UserIpAccessDetails[] - Success
+   * @returns UserIpAccessDetails[] - Successfully retrieved user\&#39;s blocked ips
    * @throws {MonoCloudException}
    * @memberof UsersClient
    *
@@ -361,7 +361,7 @@ export class UsersClient extends MonoCloudClientBase {
    * @summary Unblock an ip address
    * @param {string} userId User Id
    * @param {UnblockIpRequest} unblockIpRequest The unblock ip request
-   * @returns User - Success
+   * @returns User - Successfully unblocked an ip
    * @throws {MonoCloudException}
    * @memberof UsersClient
    *

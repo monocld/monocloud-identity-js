@@ -10,61 +10,61 @@ import { UserUsername } from './user-username';
  */
 export interface UserWithAccessDetails {
   /**
-   * Unique identifier of the user.
+   * Unique identifier of the user
    * @type {string}
    * @memberof UserWithAccessDetails
    */
   user_id: string;
   /**
-   * Specifies whether the account has been disabled.
+   * Specifies whether the account has been disabled
    * @type {boolean}
    * @memberof UserWithAccessDetails
    */
   disabled: boolean;
   /**
-   * User Claims.
+   * User\'s Claims
    * @type {{ [key: string]: any; }}
    * @memberof UserWithAccessDetails
    */
   claims: Record<string, any>;
   /**
-   * User Public Data.
+   * User\' Public Data
    * @type {{ [key: string]: any; }}
    * @memberof UserWithAccessDetails
    */
   public_data: Record<string, any>;
   /**
-   * Custom Private Data.
+   * User\'s Private Data
    * @type {{ [key: string]: any; }}
    * @memberof UserWithAccessDetails
    */
   private_data: Record<string, any>;
   /**
-   * List of registered emails of user.
+   * List of registered emails of user
    * @type {UserEmail[]}
    * @memberof UserWithAccessDetails
    */
   emails: UserEmail[];
   /**
-   * List of registered phones of user.
+   * List of registered phones of user
    * @type {UserPhone[]}
    * @memberof UserWithAccessDetails
    */
   phone_numbers: UserPhone[];
   /**
-   * List of registered idps of user.
+   * List of registered idps of user
    * @type {UserIdP[]}
    * @memberof UserWithAccessDetails
    */
   idps: UserIdP[];
   /**
-   * Specifies the creation time of the user (in Epoch).
+   * Specifies the creation time of the user (in Epoch)
    * @type {number}
    * @memberof UserWithAccessDetails
    */
   creation_time: number;
   /**
-   * Specifies the last update time of the user (in Epoch).
+   * Specifies the last update time of the user (in Epoch)
    * @type {number}
    * @memberof UserWithAccessDetails
    */

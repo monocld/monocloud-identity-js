@@ -10,49 +10,49 @@ import { UserUsername } from './user-username';
  */
 export interface UserSummary {
   /**
-   * Unique identifier of the user.
+   * Unique identifier of the user
    * @type {string}
    * @memberof UserSummary
    */
   user_id: string;
   /**
-   * Specifies whether the account has been disabled.
+   * Specifies whether the account has been disabled
    * @type {boolean}
    * @memberof UserSummary
    */
   disabled: boolean;
   /**
-   * User Claims.
+   * User\'s Claims
    * @type {{ [key: string]: any; }}
    * @memberof UserSummary
    */
   claims: Record<string, any>;
   /**
-   * List of registered emails of user.
+   * List of registered emails of user
    * @type {UserEmail[]}
    * @memberof UserSummary
    */
   emails: UserEmail[];
   /**
-   * List of registered phones of user.
+   * List of registered phones of user
    * @type {UserPhone[]}
    * @memberof UserSummary
    */
   phone_numbers: UserPhone[];
   /**
-   * List of registered idps of user.
+   * List of registered idps of user
    * @type {UserIdPSummary[]}
    * @memberof UserSummary
    */
   idps: UserIdPSummary[];
   /**
-   * Specifies the creation time of the user (in Epoch).
+   * Specifies the creation time of the user (in Epoch)
    * @type {number}
    * @memberof UserSummary
    */
   creation_time: number;
   /**
-   * Specifies the last update time of the user (in Epoch).
+   * Specifies the last update time of the user (in Epoch)
    * @type {number}
    * @memberof UserSummary
    */
