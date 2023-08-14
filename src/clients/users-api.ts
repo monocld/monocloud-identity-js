@@ -16,8 +16,8 @@ export class UsersClient extends MonoCloudClientBase {
   /**
    *
    * @summary Get all users
-   * @param {number} [page]
-   * @param {number} [size]
+   * @param {number} [page] Page Number
+   * @param {number} [size] Page Size
    * @returns UserSummary[] - Successfully retrieved users
    * @throws {MonoCloudException}
    * @memberof UsersClient
@@ -322,8 +322,8 @@ export class UsersClient extends MonoCloudClientBase {
    *
    * @summary Get a list of blocked ips
    * @param {string} userId User Id
-   * @param {number} [page]
-   * @param {number} [size]
+   * @param {number} [page] Page Number
+   * @param {number} [size] Page Size
    * @returns UserIpAccessDetails[] - Successfully retrieved user\&#39;s blocked ips
    * @throws {MonoCloudException}
    * @memberof UsersClient
