@@ -37,6 +37,10 @@ export const IdPs = {
    *
    */
   Discord: 'discord',
+  /**
+   *
+   */
+  Twitter: 'twitter',
 } as const;
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
