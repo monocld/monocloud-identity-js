@@ -41,6 +41,10 @@ export const IdPs = {
    *
    */
   Twitter: 'twitter',
+  /**
+   *
+   */
+  Linkedin: 'linkedin',
 } as const;
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
