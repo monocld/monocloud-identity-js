@@ -3,12 +3,8 @@ import { MonoCloudConfig } from '@monocloud/sdk-js-core';
 import { UsersClient } from './clients';
 
 export class MonoCloudUsersBackendClient extends UsersClient {
-  private constructor(
-    options: MonoCloudConfig,
-    baseDomain: string,
-    instance?: AxiosInstance
-  ) {
-    super(options, `https://${baseDomain}`, instance);
+  private constructor(options: MonoCloudConfig, instance?: AxiosInstance) {
+    super(options, instance);
   }
 
   public static init(
@@ -18,8 +14,8 @@ export class MonoCloudUsersBackendClient extends UsersClient {
     const envTimeout = parseInt(process.env.MC_MANAGE_TIMEOUT ?? '', 10);
 
     const opt: MonoCloudConfig = {
+      domain: options?.domain ?? process.env.MC_DOMAIN ?? '',
       apiKey: options?.apiKey ?? process.env.MC_MANAGE_API_KEY ?? '',
-      tenantId: options?.tenantId ?? process.env.MC_TENANT_ID ?? '',
       config: options?.config ?? {
         retry: options?.config?.retry ?? process.env.MC_MANAGE_RETRY === 'true',
         timeout:
@@ -30,10 +26,6 @@ export class MonoCloudUsersBackendClient extends UsersClient {
       },
     };
 
-    return new MonoCloudUsersBackendClient(
-      opt,
-      process.env.MC_MANAGE_BASE_DOMAIN ?? 'api.monocloud.com',
-      instance
-    );
+    return new MonoCloudUsersBackendClient(opt, instance);
   }
 }
