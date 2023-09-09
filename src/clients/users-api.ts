@@ -8,6 +8,7 @@ import {
   UserIpAccessDetails,
   UserPrivateData,
   UserPublicData,
+  UserSession,
   UserSummary,
   UserWithAccessDetails,
 } from '../models';
@@ -382,5 +383,68 @@ export class UsersClient extends MonoCloudClientBase {
     request.data = JSON.stringify(unblockIpRequest);
 
     return this.processRequest<User>(request);
+  }
+
+  /**
+   *
+   * @summary Get all sessions for the specified user
+   * @param {string} userId User Id
+   * @param {number} [page] Page Number
+   * @param {number} [size] Page Size
+   * @returns UserSession[] - Successfully retrieved users
+   * @throws {MonoCloudException}
+   * @memberof UsersClient
+   *
+   */
+  public getAllUserSesions(
+    userId: string,
+    page?: number,
+    size?: number
+  ): Promise<MonoCloudResponse<UserSession[]>> {
+    const request: AxiosRequestConfig = { method: 'GET' };
+
+    const url = `/users/{user_id}/sessions`.replace(
+      `{${'user_id'}}`,
+      encodeURIComponent(String(userId))
+    );
+
+    request.url = url;
+
+    request.params = {};
+
+    if (page !== undefined && page !== null) {
+      request.params.page = String(page);
+    }
+
+    if (size !== undefined && size !== null) {
+      request.params.size = String(size);
+    }
+
+    return this.processRequest<UserSession[]>(request);
+  }
+
+  /**
+   *
+   * @summary Revoke a user session
+   * @param {string} userId User Id
+   * @param {string} sessionId Session Id
+   * @returns No Content
+   * @throws {MonoCloudException}
+   * @memberof UsersClient
+   *
+   */
+  public revokeUserSession(
+    userId: string,
+    sessionId: string
+  ): Promise<MonoCloudResponse<null>> {
+    const request: AxiosRequestConfig = { method: 'DELETE' };
+
+    const url = `/users/{user_id}/sessions/{session_id}`
+      .replace(`{${'user_id'}}`, encodeURIComponent(String(userId)))
+      .replace(`{${'session_id'}}`, encodeURIComponent(String(sessionId)));
+
+    request.url = url;
+
+    return this.processRequest<null>(request);
   }
 }

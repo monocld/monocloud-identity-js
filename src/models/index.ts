@@ -16,6 +16,8 @@ export * from './user-ip-access-details';
 export * from './user-phone';
 export * from './user-private-data';
 export * from './user-public-data';
+export * from './user-session';
+export * from './user-session-metadata';
 export * from './user-summary';
 export * from './user-username';
 export * from './user-with-access-details';
