@@ -189,6 +189,34 @@ export class UsersClient extends MonoCloudClientBase {
 
   /**
    *
+   * @summary Marks the specified email as verified.
+   * @param {string} userId User Id
+   * @param {string} identifierId The Id of the email to be marked as verified.
+   * @returns User - Successfully updated user\&#39;s primary email
+   * @throws {MonoCloudException}
+   * @memberof UsersClient
+   *
+   */
+  public setEmailVerifiedEndpoint(
+    userId: string,
+    identifierId: string
+  ): Promise<MonoCloudResponse<User>> {
+    const request: AxiosRequestConfig = { method: 'POST' };
+
+    const url = `/users/{user_id}/emails/{identifier_id}/verify`
+      .replace(`{${'user_id'}}`, encodeURIComponent(String(userId)))
+      .replace(
+        `{${'identifier_id'}}`,
+        encodeURIComponent(String(identifierId))
+      );
+
+    request.url = url;
+
+    return this.processRequest<User>(request);
+  }
+
+  /**
+   *
    * @summary Set a user\'s primary phone
    * @param {string} userId User Id
    * @param {string} identifierId The Id of the phone to be set a primary.
@@ -204,6 +232,34 @@ export class UsersClient extends MonoCloudClientBase {
     const request: AxiosRequestConfig = { method: 'POST' };
 
     const url = `/users/{user_id}/phones/{identifier_id}/primary`
+      .replace(`{${'user_id'}}`, encodeURIComponent(String(userId)))
+      .replace(
+        `{${'identifier_id'}}`,
+        encodeURIComponent(String(identifierId))
+      );
+
+    request.url = url;
+
+    return this.processRequest<User>(request);
+  }
+
+  /**
+   *
+   * @summary Marks the specified phone as verified.
+   * @param {string} userId User Id
+   * @param {string} identifierId The Id of the phone to be set verified.
+   * @returns User - Success
+   * @throws {MonoCloudException}
+   * @memberof UsersClient
+   *
+   */
+  public setPhonVerifiedEndpoint(
+    userId: string,
+    identifierId: string
+  ): Promise<MonoCloudResponse<User>> {
+    const request: AxiosRequestConfig = { method: 'POST' };
+
+    const url = `/users/{user_id}/phones/{identifier_id}/verify`
       .replace(`{${'user_id'}}`, encodeURIComponent(String(userId)))
       .replace(
         `{${'identifier_id'}}`,
