@@ -19,6 +19,8 @@ export class UsersClient extends MonoCloudClientBase {
    * @summary Get all users
    * @param {number} [page] Page Number
    * @param {number} [size] Page Size
+   * @param {string} [filter] Value by which the resources needs to be filtered.
+   * @param {string} [sort] Value by results will be sorted.
    * @returns UserSummary[] - Successfully retrieved users
    * @throws {MonoCloudException}
    * @memberof UsersClient
@@ -26,7 +28,9 @@ export class UsersClient extends MonoCloudClientBase {
    */
   public getAllUsers(
     page?: number,
-    size?: number
+    size?: number,
+    filter?: string,
+    sort?: string
   ): Promise<MonoCloudResponse<UserSummary[]>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
@@ -42,6 +46,14 @@ export class UsersClient extends MonoCloudClientBase {
 
     if (size !== undefined && size !== null) {
       request.params.size = String(size);
+    }
+
+    if (filter !== undefined && filter !== null) {
+      request.params.filter = String(filter);
+    }
+
+    if (sort !== undefined && sort !== null) {
+      request.params.sort = String(sort);
     }
 
     return this.processRequest<UserSummary[]>(request);
@@ -297,19 +309,19 @@ export class UsersClient extends MonoCloudClientBase {
 
   /**
    *
-   * @summary Update a user\'s private data
+   * @summary Updates fields for the user\'s private data
    * @param {string} userId User Id
    * @param {UpdatePrivateDataRequest} updatePrivateDataRequest Data to be updated
-   * @returns UserPrivateData - Successfully updated the user\&#39;s private data
+   * @returns UserPrivateData - Successfully updated the fields for the user\&#39;s private data
    * @throws {MonoCloudException}
    * @memberof UsersClient
    *
    */
-  public updatePrivateData(
+  public patchPrivateData(
     userId: string,
     updatePrivateDataRequest: UpdatePrivateDataRequest
   ): Promise<MonoCloudResponse<UserPrivateData>> {
-    const request: AxiosRequestConfig = { method: 'POST' };
+    const request: AxiosRequestConfig = { method: 'PATCH' };
 
     const url = `/users/{user_id}/private_data`.replace(
       `{${'user_id'}}`,
@@ -349,19 +361,19 @@ export class UsersClient extends MonoCloudClientBase {
 
   /**
    *
-   * @summary Update a user\'s public data
+   * @summary Updates fields for the user\'s public data
    * @param {string} userId User Id
    * @param {UpdatePublicDataRequest} updatePublicDataRequest Data to be updated
-   * @returns UserPublicData - Successfully updated the user\&#39;s public data
+   * @returns UserPublicData - Successfully updated the fields for the user\&#39;s public data
    * @throws {MonoCloudException}
    * @memberof UsersClient
    *
    */
-  public updatePublicData(
+  public patchPublicData(
     userId: string,
     updatePublicDataRequest: UpdatePublicDataRequest
   ): Promise<MonoCloudResponse<UserPublicData>> {
-    const request: AxiosRequestConfig = { method: 'POST' };
+    const request: AxiosRequestConfig = { method: 'PATCH' };
 
     const url = `/users/{user_id}/public_data`.replace(
       `{${'user_id'}}`,
