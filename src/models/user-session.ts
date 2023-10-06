@@ -7,31 +7,43 @@ import { UserSessionMetadata } from './user-session-metadata';
  */
 export interface UserSession {
   /**
-   * Unique identifier of the session
+   * The session key
+   * @type {string}
+   * @memberof UserSession
+   */
+  session_key: string;
+  /**
+   * The unique identifier of the session
    * @type {string}
    * @memberof UserSession
    */
   session_id: string;
   /**
-   * Specifies the creation time of the session (in Epoch)
+   * The list of client ids which are associated with the session
+   * @type {string[]}
+   * @memberof UserSession
+   */
+  client_ids: string[];
+  /**
+   * The initial time when the session was created
    * @type {number}
    * @memberof UserSession
    */
-  creation_time: number;
+  initiated_at: number;
   /**
-   * Specifies the last update time of the session (in Epoch)
+   * The expiration time of the session
+   * @type {number}
+   * @memberof UserSession
+   */
+  expires_at: number;
+  /**
+   * The last updated time
    * @type {number}
    * @memberof UserSession
    */
   last_updated: number;
   /**
-   * Specifies the expiry time of the session (in Epoch)
-   * @type {number}
-   * @memberof UserSession
-   */
-  expires: number;
-  /**
-   * Specifies the metadata associated with the session (in Epoch)
+   * The session metadata
    * @type {UserSessionMetadata}
    * @memberof UserSession
    */

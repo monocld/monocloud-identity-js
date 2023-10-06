@@ -1,6 +1,7 @@
 import { AxiosRequestConfig } from 'axios';
 import { MonoCloudClientBase, MonoCloudResponse } from '@monocloud/sdk-js-core';
 import {
+  DisableUserRequest,
   UnblockIpRequest,
   UpdatePrivateDataRequest,
   UpdatePublicDataRequest,
@@ -131,12 +132,16 @@ export class UsersClient extends MonoCloudClientBase {
    *
    * @summary Disable a user
    * @param {string} userId User Id
+   * @param {DisableUserRequest} disableUserRequest The disable user request.
    * @returns User - Successfully disabled the user
    * @throws {MonoCloudException}
    * @memberof UsersClient
    *
    */
-  public disableUser(userId: string): Promise<MonoCloudResponse<User>> {
+  public disableUser(
+    userId: string,
+    disableUserRequest: DisableUserRequest
+  ): Promise<MonoCloudResponse<User>> {
     const request: AxiosRequestConfig = { method: 'POST' };
 
     const url = `/users/{user_id}/disable`.replace(
@@ -145,6 +150,8 @@ export class UsersClient extends MonoCloudClientBase {
     );
 
     request.url = url;
+
+    request.data = JSON.stringify(disableUserRequest);
 
     return this.processRequest<User>(request);
   }
@@ -459,6 +466,8 @@ export class UsersClient extends MonoCloudClientBase {
    * @param {string} userId User Id
    * @param {number} [page] Page Number
    * @param {number} [size] Page Size
+   * @param {string} [sort] Value by results will be sorted.
+   * @param {string} [client] Client Id to search for
    * @returns UserSession[] - Successfully retrieved users
    * @throws {MonoCloudException}
    * @memberof UsersClient
@@ -467,7 +476,9 @@ export class UsersClient extends MonoCloudClientBase {
   public getAllUserSesions(
     userId: string,
     page?: number,
-    size?: number
+    size?: number,
+    sort?: string,
+    client?: string
   ): Promise<MonoCloudResponse<UserSession[]>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
@@ -486,6 +497,14 @@ export class UsersClient extends MonoCloudClientBase {
 
     if (size !== undefined && size !== null) {
       request.params.size = String(size);
+    }
+
+    if (sort !== undefined && sort !== null) {
+      request.params.sort = String(sort);
+    }
+
+    if (client !== undefined && client !== null) {
+      request.params.client = String(client);
     }
 
     return this.processRequest<UserSession[]>(request);
