@@ -20,8 +20,8 @@ export class UsersClient extends MonoCloudClientBase {
    * @summary Get all users
    * @param {number} [page] Page Number
    * @param {number} [size] Page Size
-   * @param {string} [filter] Value by which the resources needs to be filtered.
-   * @param {string} [sort] Value by results will be sorted.
+   * @param {string} [filter] Value by which the users needs to be filtered.
+   * @param {string} [sort] Value in \'sort_key:sort_order\' format, by which results will be sorted. Sort order value can be \'1\' for ascending and \'-1\' for descending.  Acceptable sort key values are \'given_name\', \'middle_name\', \'family_name\', \'name\', \'creation_time\', and \'last_updated\'
    * @returns UserSummary[] - Successfully retrieved users
    * @throws {MonoCloudException}
    * @memberof UsersClient
@@ -400,6 +400,8 @@ export class UsersClient extends MonoCloudClientBase {
    * @param {string} userId User Id
    * @param {number} [page] Page Number
    * @param {number} [size] Page Size
+   * @param {string} [filter] Ip address by which the blocked ips needs to be filtered.
+   * @param {string} [sort] Value in \'sort_key:sort_order\' format, by which results will be sorted. Sort order value can be \'1\' for ascending and \'-1\' for descending.  Acceptable sort key values are \'block_until\' and \'last_login_attempt\'
    * @returns UserIpAccessDetails[] - Successfully retrieved user\&#39;s blocked ips
    * @throws {MonoCloudException}
    * @memberof UsersClient
@@ -408,7 +410,9 @@ export class UsersClient extends MonoCloudClientBase {
   public getAllBlockedIps(
     userId: string,
     page?: number,
-    size?: number
+    size?: number,
+    filter?: string,
+    sort?: string
   ): Promise<MonoCloudResponse<UserIpAccessDetails[]>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
@@ -427,6 +431,14 @@ export class UsersClient extends MonoCloudClientBase {
 
     if (size !== undefined && size !== null) {
       request.params.size = String(size);
+    }
+
+    if (filter !== undefined && filter !== null) {
+      request.params.filter = String(filter);
+    }
+
+    if (sort !== undefined && sort !== null) {
+      request.params.sort = String(sort);
     }
 
     return this.processRequest<UserIpAccessDetails[]>(request);
@@ -466,8 +478,8 @@ export class UsersClient extends MonoCloudClientBase {
    * @param {string} userId User Id
    * @param {number} [page] Page Number
    * @param {number} [size] Page Size
-   * @param {string} [sort] Value by results will be sorted.
-   * @param {string} [client] Client Id to search for
+   * @param {string} [filter] Client Id by which the user sessions needs to be filtered.
+   * @param {string} [sort] Value in \'sort_key:sort_order\' format, by which results will be sorted. Sort order value can be \'1\' for ascending and \'-1\' for descending.  Acceptable sort key values are \'session_id\', \'initiated_at\', \'expires_at\' and \'last_updated\'
    * @returns UserSession[] - Successfully retrieved users
    * @throws {MonoCloudException}
    * @memberof UsersClient
@@ -477,8 +489,8 @@ export class UsersClient extends MonoCloudClientBase {
     userId: string,
     page?: number,
     size?: number,
-    sort?: string,
-    client?: string
+    filter?: string,
+    sort?: string
   ): Promise<MonoCloudResponse<UserSession[]>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
@@ -499,12 +511,12 @@ export class UsersClient extends MonoCloudClientBase {
       request.params.size = String(size);
     }
 
-    if (sort !== undefined && sort !== null) {
-      request.params.sort = String(sort);
+    if (filter !== undefined && filter !== null) {
+      request.params.filter = String(filter);
     }
 
-    if (client !== undefined && client !== null) {
-      request.params.client = String(client);
+    if (sort !== undefined && sort !== null) {
+      request.params.sort = String(sort);
     }
 
     return this.processRequest<UserSession[]>(request);

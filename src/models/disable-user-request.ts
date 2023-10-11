@@ -9,5 +9,5 @@ export interface DisableUserRequest {
    * @type {boolean}
    * @memberof DisableUserRequest
    */
-  revoke_sessions?: boolean | null;
+  revoke_sessions?: boolean;
 }
