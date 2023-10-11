@@ -2,6 +2,7 @@ import { AxiosRequestConfig } from 'axios';
 import { MonoCloudClientBase, MonoCloudResponse } from '@monocloud/sdk-js-core';
 import {
   DisableUserRequest,
+  ExternalAuthenticatorDisconnectRequest,
   UnblockIpRequest,
   UpdatePrivateDataRequest,
   UpdatePublicDataRequest,
@@ -545,5 +546,33 @@ export class UsersClient extends MonoCloudClientBase {
     request.url = url;
 
     return this.processRequest<null>(request);
+  }
+
+  /**
+   *
+   * @summary Disconnect an External Authenticator from a user
+   * @param {string} userId User Id
+   * @param {ExternalAuthenticatorDisconnectRequest} externalAuthenticatorDisconnectRequest Idp disconnect data
+   * @returns User - Success
+   * @throws {MonoCloudException}
+   * @memberof UsersClient
+   *
+   */
+  public externalAuthenticatorDisconnectEndpoint(
+    userId: string,
+    externalAuthenticatorDisconnectRequest: ExternalAuthenticatorDisconnectRequest
+  ): Promise<MonoCloudResponse<User>> {
+    const request: AxiosRequestConfig = { method: 'POST' };
+
+    const url = `/users/{user_id}/external_authenticator/disconnect`.replace(
+      `{${'user_id'}}`,
+      encodeURIComponent(String(userId))
+    );
+
+    request.url = url;
+
+    request.data = JSON.stringify(externalAuthenticatorDisconnectRequest);
+
+    return this.processRequest<User>(request);
   }
 }

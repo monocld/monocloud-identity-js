@@ -1,5 +1,6 @@
 export * from './authenticators';
 export * from './disable-user-request';
+export * from './external-authenticator-disconnect-request';
 export * from './external-authenticators';
 export * from './id-ps';
 export * from './languages';
