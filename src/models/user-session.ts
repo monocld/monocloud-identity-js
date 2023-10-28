@@ -43,9 +43,9 @@ export interface UserSession {
    */
   last_updated: number;
   /**
-   * The session metadata
+   * The last session metadata
    * @type {UserSessionMetadata}
    * @memberof UserSession
    */
-  metadata: UserSessionMetadata;
+  last_metadata: UserSessionMetadata;
 }
