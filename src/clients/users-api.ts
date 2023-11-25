@@ -1,6 +1,7 @@
 import { AxiosRequestConfig } from 'axios';
 import { MonoCloudClientBase, MonoCloudResponse } from '@monocloud/sdk-js-core';
 import {
+  CreateUserRequest,
   DisableUserRequest,
   ExternalAuthenticatorDisconnectRequest,
   UnblockIpRequest,
@@ -59,6 +60,29 @@ export class UsersClient extends MonoCloudClientBase {
     }
 
     return this.processRequest<UserSummary[]>(request);
+  }
+
+  /**
+   *
+   * @summary Create a user
+   * @param {CreateUserRequest} createUserRequest User\'s data
+   * @returns User - Success
+   * @throws {MonoCloudException}
+   * @memberof UsersClient
+   *
+   */
+  public createUser(
+    createUserRequest: CreateUserRequest
+  ): Promise<MonoCloudResponse<User>> {
+    const request: AxiosRequestConfig = { method: 'POST' };
+
+    const url = `/users`;
+
+    request.url = url;
+
+    request.data = JSON.stringify(createUserRequest);
+
+    return this.processRequest<User>(request);
   }
 
   /**

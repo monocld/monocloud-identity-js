@@ -1,4 +1,5 @@
 export * from './authenticators';
+export * from './create-user-request';
 export * from './disable-user-request';
 export * from './external-authenticator-disconnect-request';
 export * from './external-authenticators';
