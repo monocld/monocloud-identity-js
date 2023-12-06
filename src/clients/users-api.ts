@@ -297,7 +297,7 @@ export class UsersClient extends MonoCloudClientBase {
    * @memberof UsersClient
    *
    */
-  public setPhonVerifiedEndpoint(
+  public setPhoneVerifiedEndpoint(
     userId: string,
     identifierId: string
   ): Promise<MonoCloudResponse<User>> {
