@@ -1,6 +1,6 @@
 {
   "name": "@monocloud/users-backend-js",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "MonoCloud Users Backend JavaScript SDK",
   "keywords": [
     "monocloud",
@@ -10,11 +10,11 @@
   ],
   "homepage": "https://www.monocloud.com",
   "bugs": {
-    "url": "https://github.com/monocld/monocloud-users-backend-js/issues"
+    "url": "https://github.com/MonoCld/monocloud-users-backend-js/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/monocld/monocloud-users-backend-js.git"
+    "url": "git+https://github.com/MonoCld/monocloud-users-backend-js.git"
   },
   "license": "MIT",
   "author": {

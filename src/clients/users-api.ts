@@ -510,7 +510,7 @@ export class UsersClient extends MonoCloudClientBase {
    * @memberof UsersClient
    *
    */
-  public getAllUserSesions(
+  public getAllUserSessions(
     userId: string,
     page?: number,
     size?: number,
