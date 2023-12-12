@@ -5,7 +5,7 @@
  */
 export interface UserPublicData {
   /**
-   * User\' Public Data
+   * User\'s Public Data
    * @type {{ [key: string]: any; }}
    * @memberof UserPublicData
    */

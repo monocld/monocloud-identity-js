@@ -5,7 +5,7 @@
  */
 export interface UpdatePublicDataRequest {
   /**
-   * User\' Public Data
+   * User\'s Public Data
    * @type {{ [key: string]: any; }}
    * @memberof UpdatePublicDataRequest
    */

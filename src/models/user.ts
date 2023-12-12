@@ -28,7 +28,7 @@ export interface User {
    */
   claims: Record<string, any>;
   /**
-   * User\' Public Data
+   * User\'s Public Data
    * @type {{ [key: string]: any; }}
    * @memberof User
    */
