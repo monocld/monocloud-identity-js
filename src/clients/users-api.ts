@@ -66,7 +66,7 @@ export class UsersClient extends MonoCloudClientBase {
    *
    * @summary Create a user
    * @param {CreateUserRequest} createUserRequest User\'s data
-   * @returns User - Success
+   * @returns User - Created
    * @throws {MonoCloudException}
    * @memberof UsersClient
    *
