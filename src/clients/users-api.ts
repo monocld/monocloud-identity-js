@@ -261,6 +261,35 @@ export class UsersClient extends MonoCloudClientBase {
 
   /**
    *
+   * @summary Enables the Email Authenticator for a user\'s email
+   * @param {string} userId User Id
+   * @param {string} identifierId The Id of the email for which the email authenticator should be enabled.
+   * @returns User - Successfully enabled the user
+   * @throws {MonoCloudException}
+   * @memberof UsersClient
+   *
+   */
+  public enableEmailAuthenticator(
+    userId: string,
+    identifierId: string
+  ): Promise<MonoCloudResponse<User>> {
+    const request: AxiosRequestConfig = { method: 'POST' };
+
+    const url =
+      `/users/{user_id}/emails/{identifier_id}/email_authenticator/enable`
+        .replace(`{${'user_id'}}`, encodeURIComponent(String(userId)))
+        .replace(
+          `{${'identifier_id'}}`,
+          encodeURIComponent(String(identifierId))
+        );
+
+    request.url = url;
+
+    return this.processRequest<User>(request);
+  }
+
+  /**
+   *
    * @summary Set a user\'s primary phone
    * @param {string} userId User Id
    * @param {string} identifierId The Id of the phone to be set a primary.
@@ -309,6 +338,35 @@ export class UsersClient extends MonoCloudClientBase {
         `{${'identifier_id'}}`,
         encodeURIComponent(String(identifierId))
       );
+
+    request.url = url;
+
+    return this.processRequest<User>(request);
+  }
+
+  /**
+   *
+   * @summary Enables the Phone Authenticator for a user\'s phone
+   * @param {string} userId User Id
+   * @param {string} identifierId The Id of the phone for which the phone authenticator should be enabled.
+   * @returns User - Successfully enabled the user
+   * @throws {MonoCloudException}
+   * @memberof UsersClient
+   *
+   */
+  public enablePhoneAuthenticator(
+    userId: string,
+    identifierId: string
+  ): Promise<MonoCloudResponse<User>> {
+    const request: AxiosRequestConfig = { method: 'POST' };
+
+    const url =
+      `/users/{user_id}/phones/{identifier_id}/phone_authenticator/enable`
+        .replace(`{${'user_id'}}`, encodeURIComponent(String(userId)))
+        .replace(
+          `{${'identifier_id'}}`,
+          encodeURIComponent(String(identifierId))
+        );
 
     request.url = url;
 
