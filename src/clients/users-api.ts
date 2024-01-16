@@ -1,5 +1,9 @@
 import { AxiosRequestConfig } from 'axios';
-import { MonoCloudClientBase, MonoCloudResponse } from '@monocloud/sdk-js-core';
+import {
+  MonoCloudClientBase,
+  MonoCloudResponse,
+  MonoCloudPageResponse,
+} from '@monocloud/sdk-js-core';
 import {
   CreateUserRequest,
   DisableUserRequest,
@@ -34,7 +38,7 @@ export class UsersClient extends MonoCloudClientBase {
     size?: number,
     filter?: string,
     sort?: string
-  ): Promise<MonoCloudResponse<UserSummary[]>> {
+  ): Promise<MonoCloudPageResponse<UserSummary[]>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
     const url = `/users`;
@@ -59,7 +63,7 @@ export class UsersClient extends MonoCloudClientBase {
       request.params.sort = String(sort);
     }
 
-    return this.processRequest<UserSummary[]>(request);
+    return this.processPaginatedRequest<UserSummary[]>(request);
   }
 
   /**
@@ -496,7 +500,7 @@ export class UsersClient extends MonoCloudClientBase {
     size?: number,
     filter?: string,
     sort?: string
-  ): Promise<MonoCloudResponse<UserIpAccessDetails[]>> {
+  ): Promise<MonoCloudPageResponse<UserIpAccessDetails[]>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
     const url = `/users/{user_id}/blocked_ips`.replace(
@@ -524,7 +528,7 @@ export class UsersClient extends MonoCloudClientBase {
       request.params.sort = String(sort);
     }
 
-    return this.processRequest<UserIpAccessDetails[]>(request);
+    return this.processPaginatedRequest<UserIpAccessDetails[]>(request);
   }
 
   /**
@@ -574,7 +578,7 @@ export class UsersClient extends MonoCloudClientBase {
     size?: number,
     filter?: string,
     sort?: string
-  ): Promise<MonoCloudResponse<UserSession[]>> {
+  ): Promise<MonoCloudPageResponse<UserSession[]>> {
     const request: AxiosRequestConfig = { method: 'GET' };
 
     const url = `/users/{user_id}/sessions`.replace(
@@ -602,7 +606,7 @@ export class UsersClient extends MonoCloudClientBase {
       request.params.sort = String(sort);
     }
 
-    return this.processRequest<UserSession[]>(request);
+    return this.processPaginatedRequest<UserSession[]>(request);
   }
 
   /**
