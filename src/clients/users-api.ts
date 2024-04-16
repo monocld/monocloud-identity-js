@@ -1,8 +1,8 @@
-import { AxiosRequestConfig } from 'axios';
 import {
   MonoCloudClientBase,
   MonoCloudResponse,
   MonoCloudPageResponse,
+  MonoCloudRequest,
 } from '@monocloud/sdk-js-core';
 import {
   CreateUserRequest,
@@ -39,28 +39,26 @@ export class UsersClient extends MonoCloudClientBase {
     filter?: string,
     sort?: string
   ): Promise<MonoCloudPageResponse<UserSummary[]>> {
-    const request: AxiosRequestConfig = { method: 'GET' };
-
     const url = `/users`;
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'GET', url };
 
-    request.params = {};
+    request.queryParams = {};
 
     if (page !== undefined && page !== null) {
-      request.params.page = String(page);
+      request.queryParams.page = String(page);
     }
 
     if (size !== undefined && size !== null) {
-      request.params.size = String(size);
+      request.queryParams.size = String(size);
     }
 
     if (filter !== undefined && filter !== null) {
-      request.params.filter = String(filter);
+      request.queryParams.filter = String(filter);
     }
 
     if (sort !== undefined && sort !== null) {
-      request.params.sort = String(sort);
+      request.queryParams.sort = String(sort);
     }
 
     return this.processPaginatedRequest<UserSummary[]>(request);
@@ -78,13 +76,11 @@ export class UsersClient extends MonoCloudClientBase {
   public createUser(
     createUserRequest: CreateUserRequest
   ): Promise<MonoCloudResponse<User>> {
-    const request: AxiosRequestConfig = { method: 'POST' };
-
     const url = `/users`;
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'POST', url };
 
-    request.data = JSON.stringify(createUserRequest);
+    request.body = createUserRequest;
 
     return this.processRequest<User>(request);
   }
@@ -101,14 +97,12 @@ export class UsersClient extends MonoCloudClientBase {
   public findUserById(
     userId: string
   ): Promise<MonoCloudResponse<UserWithAccessDetails>> {
-    const request: AxiosRequestConfig = { method: 'GET' };
-
     const url = `/users/{user_id}`.replace(
       `{${'user_id'}}`,
       encodeURIComponent(String(userId))
     );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'GET', url };
 
     return this.processRequest<UserWithAccessDetails>(request);
   }
@@ -123,14 +117,12 @@ export class UsersClient extends MonoCloudClientBase {
    *
    */
   public deleteUser(userId: string): Promise<MonoCloudResponse<null>> {
-    const request: AxiosRequestConfig = { method: 'DELETE' };
-
     const url = `/users/{user_id}`.replace(
       `{${'user_id'}}`,
       encodeURIComponent(String(userId))
     );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'DELETE', url };
 
     return this.processRequest<null>(request);
   }
@@ -145,14 +137,12 @@ export class UsersClient extends MonoCloudClientBase {
    *
    */
   public enableUser(userId: string): Promise<MonoCloudResponse<User>> {
-    const request: AxiosRequestConfig = { method: 'POST' };
-
     const url = `/users/{user_id}/enable`.replace(
       `{${'user_id'}}`,
       encodeURIComponent(String(userId))
     );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'POST', url };
 
     return this.processRequest<User>(request);
   }
@@ -171,16 +161,14 @@ export class UsersClient extends MonoCloudClientBase {
     userId: string,
     disableUserRequest: DisableUserRequest
   ): Promise<MonoCloudResponse<User>> {
-    const request: AxiosRequestConfig = { method: 'POST' };
-
     const url = `/users/{user_id}/disable`.replace(
       `{${'user_id'}}`,
       encodeURIComponent(String(userId))
     );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'POST', url };
 
-    request.data = JSON.stringify(disableUserRequest);
+    request.body = disableUserRequest;
 
     return this.processRequest<User>(request);
   }
@@ -195,14 +183,12 @@ export class UsersClient extends MonoCloudClientBase {
    *
    */
   public unblockUser(userId: string): Promise<MonoCloudResponse<User>> {
-    const request: AxiosRequestConfig = { method: 'POST' };
-
     const url = `/users/{user_id}/unblock`.replace(
       `{${'user_id'}}`,
       encodeURIComponent(String(userId))
     );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'POST', url };
 
     return this.processRequest<User>(request);
   }
@@ -221,8 +207,6 @@ export class UsersClient extends MonoCloudClientBase {
     userId: string,
     identifierId: string
   ): Promise<MonoCloudResponse<User>> {
-    const request: AxiosRequestConfig = { method: 'POST' };
-
     const url = `/users/{user_id}/emails/{identifier_id}/primary`
       .replace(`{${'user_id'}}`, encodeURIComponent(String(userId)))
       .replace(
@@ -230,7 +214,7 @@ export class UsersClient extends MonoCloudClientBase {
         encodeURIComponent(String(identifierId))
       );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'POST', url };
 
     return this.processRequest<User>(request);
   }
@@ -249,8 +233,6 @@ export class UsersClient extends MonoCloudClientBase {
     userId: string,
     identifierId: string
   ): Promise<MonoCloudResponse<User>> {
-    const request: AxiosRequestConfig = { method: 'POST' };
-
     const url = `/users/{user_id}/emails/{identifier_id}/verify`
       .replace(`{${'user_id'}}`, encodeURIComponent(String(userId)))
       .replace(
@@ -258,7 +240,7 @@ export class UsersClient extends MonoCloudClientBase {
         encodeURIComponent(String(identifierId))
       );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'POST', url };
 
     return this.processRequest<User>(request);
   }
@@ -277,8 +259,6 @@ export class UsersClient extends MonoCloudClientBase {
     userId: string,
     identifierId: string
   ): Promise<MonoCloudResponse<User>> {
-    const request: AxiosRequestConfig = { method: 'POST' };
-
     const url =
       `/users/{user_id}/emails/{identifier_id}/email_authenticator/enable`
         .replace(`{${'user_id'}}`, encodeURIComponent(String(userId)))
@@ -287,7 +267,7 @@ export class UsersClient extends MonoCloudClientBase {
           encodeURIComponent(String(identifierId))
         );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'POST', url };
 
     return this.processRequest<User>(request);
   }
@@ -306,8 +286,6 @@ export class UsersClient extends MonoCloudClientBase {
     userId: string,
     identifierId: string
   ): Promise<MonoCloudResponse<User>> {
-    const request: AxiosRequestConfig = { method: 'POST' };
-
     const url = `/users/{user_id}/phones/{identifier_id}/primary`
       .replace(`{${'user_id'}}`, encodeURIComponent(String(userId)))
       .replace(
@@ -315,7 +293,7 @@ export class UsersClient extends MonoCloudClientBase {
         encodeURIComponent(String(identifierId))
       );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'POST', url };
 
     return this.processRequest<User>(request);
   }
@@ -334,8 +312,6 @@ export class UsersClient extends MonoCloudClientBase {
     userId: string,
     identifierId: string
   ): Promise<MonoCloudResponse<User>> {
-    const request: AxiosRequestConfig = { method: 'POST' };
-
     const url = `/users/{user_id}/phones/{identifier_id}/verify`
       .replace(`{${'user_id'}}`, encodeURIComponent(String(userId)))
       .replace(
@@ -343,7 +319,7 @@ export class UsersClient extends MonoCloudClientBase {
         encodeURIComponent(String(identifierId))
       );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'POST', url };
 
     return this.processRequest<User>(request);
   }
@@ -362,8 +338,6 @@ export class UsersClient extends MonoCloudClientBase {
     userId: string,
     identifierId: string
   ): Promise<MonoCloudResponse<User>> {
-    const request: AxiosRequestConfig = { method: 'POST' };
-
     const url =
       `/users/{user_id}/phones/{identifier_id}/phone_authenticator/enable`
         .replace(`{${'user_id'}}`, encodeURIComponent(String(userId)))
@@ -372,7 +346,7 @@ export class UsersClient extends MonoCloudClientBase {
           encodeURIComponent(String(identifierId))
         );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'POST', url };
 
     return this.processRequest<User>(request);
   }
@@ -389,14 +363,12 @@ export class UsersClient extends MonoCloudClientBase {
   public getPrivateData(
     userId: string
   ): Promise<MonoCloudResponse<UserPrivateData>> {
-    const request: AxiosRequestConfig = { method: 'GET' };
-
     const url = `/users/{user_id}/private_data`.replace(
       `{${'user_id'}}`,
       encodeURIComponent(String(userId))
     );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'GET', url };
 
     return this.processRequest<UserPrivateData>(request);
   }
@@ -415,16 +387,14 @@ export class UsersClient extends MonoCloudClientBase {
     userId: string,
     updatePrivateDataRequest: UpdatePrivateDataRequest
   ): Promise<MonoCloudResponse<UserPrivateData>> {
-    const request: AxiosRequestConfig = { method: 'PATCH' };
-
     const url = `/users/{user_id}/private_data`.replace(
       `{${'user_id'}}`,
       encodeURIComponent(String(userId))
     );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'PATCH', url };
 
-    request.data = JSON.stringify(updatePrivateDataRequest);
+    request.body = updatePrivateDataRequest;
 
     return this.processRequest<UserPrivateData>(request);
   }
@@ -441,14 +411,12 @@ export class UsersClient extends MonoCloudClientBase {
   public getPublicData(
     userId: string
   ): Promise<MonoCloudResponse<UserPublicData>> {
-    const request: AxiosRequestConfig = { method: 'GET' };
-
     const url = `/users/{user_id}/public_data`.replace(
       `{${'user_id'}}`,
       encodeURIComponent(String(userId))
     );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'GET', url };
 
     return this.processRequest<UserPublicData>(request);
   }
@@ -467,16 +435,14 @@ export class UsersClient extends MonoCloudClientBase {
     userId: string,
     updatePublicDataRequest: UpdatePublicDataRequest
   ): Promise<MonoCloudResponse<UserPublicData>> {
-    const request: AxiosRequestConfig = { method: 'PATCH' };
-
     const url = `/users/{user_id}/public_data`.replace(
       `{${'user_id'}}`,
       encodeURIComponent(String(userId))
     );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'PATCH', url };
 
-    request.data = JSON.stringify(updatePublicDataRequest);
+    request.body = updatePublicDataRequest;
 
     return this.processRequest<UserPublicData>(request);
   }
@@ -501,31 +467,29 @@ export class UsersClient extends MonoCloudClientBase {
     filter?: string,
     sort?: string
   ): Promise<MonoCloudPageResponse<UserIpAccessDetails[]>> {
-    const request: AxiosRequestConfig = { method: 'GET' };
-
     const url = `/users/{user_id}/blocked_ips`.replace(
       `{${'user_id'}}`,
       encodeURIComponent(String(userId))
     );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'GET', url };
 
-    request.params = {};
+    request.queryParams = {};
 
     if (page !== undefined && page !== null) {
-      request.params.page = String(page);
+      request.queryParams.page = String(page);
     }
 
     if (size !== undefined && size !== null) {
-      request.params.size = String(size);
+      request.queryParams.size = String(size);
     }
 
     if (filter !== undefined && filter !== null) {
-      request.params.filter = String(filter);
+      request.queryParams.filter = String(filter);
     }
 
     if (sort !== undefined && sort !== null) {
-      request.params.sort = String(sort);
+      request.queryParams.sort = String(sort);
     }
 
     return this.processPaginatedRequest<UserIpAccessDetails[]>(request);
@@ -545,16 +509,14 @@ export class UsersClient extends MonoCloudClientBase {
     userId: string,
     unblockIpRequest: UnblockIpRequest
   ): Promise<MonoCloudResponse<User>> {
-    const request: AxiosRequestConfig = { method: 'POST' };
-
     const url = `/users/{user_id}/blocked_ips/unblock`.replace(
       `{${'user_id'}}`,
       encodeURIComponent(String(userId))
     );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'POST', url };
 
-    request.data = JSON.stringify(unblockIpRequest);
+    request.body = unblockIpRequest;
 
     return this.processRequest<User>(request);
   }
@@ -579,31 +541,29 @@ export class UsersClient extends MonoCloudClientBase {
     filter?: string,
     sort?: string
   ): Promise<MonoCloudPageResponse<UserSession[]>> {
-    const request: AxiosRequestConfig = { method: 'GET' };
-
     const url = `/users/{user_id}/sessions`.replace(
       `{${'user_id'}}`,
       encodeURIComponent(String(userId))
     );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'GET', url };
 
-    request.params = {};
+    request.queryParams = {};
 
     if (page !== undefined && page !== null) {
-      request.params.page = String(page);
+      request.queryParams.page = String(page);
     }
 
     if (size !== undefined && size !== null) {
-      request.params.size = String(size);
+      request.queryParams.size = String(size);
     }
 
     if (filter !== undefined && filter !== null) {
-      request.params.filter = String(filter);
+      request.queryParams.filter = String(filter);
     }
 
     if (sort !== undefined && sort !== null) {
-      request.params.sort = String(sort);
+      request.queryParams.sort = String(sort);
     }
 
     return this.processPaginatedRequest<UserSession[]>(request);
@@ -623,13 +583,11 @@ export class UsersClient extends MonoCloudClientBase {
     userId: string,
     sessionId: string
   ): Promise<MonoCloudResponse<null>> {
-    const request: AxiosRequestConfig = { method: 'DELETE' };
-
     const url = `/users/{user_id}/sessions/{session_id}`
       .replace(`{${'user_id'}}`, encodeURIComponent(String(userId)))
       .replace(`{${'session_id'}}`, encodeURIComponent(String(sessionId)));
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'DELETE', url };
 
     return this.processRequest<null>(request);
   }
@@ -648,16 +606,14 @@ export class UsersClient extends MonoCloudClientBase {
     userId: string,
     externalAuthenticatorDisconnectRequest: ExternalAuthenticatorDisconnectRequest
   ): Promise<MonoCloudResponse<User>> {
-    const request: AxiosRequestConfig = { method: 'POST' };
-
     const url = `/users/{user_id}/external_authenticator/disconnect`.replace(
       `{${'user_id'}}`,
       encodeURIComponent(String(userId))
     );
 
-    request.url = url;
+    const request: MonoCloudRequest = { method: 'POST', url };
 
-    request.data = JSON.stringify(externalAuthenticatorDisconnectRequest);
+    request.body = externalAuthenticatorDisconnectRequest;
 
     return this.processRequest<User>(request);
   }

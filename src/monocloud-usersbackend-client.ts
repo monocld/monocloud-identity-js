@@ -1,15 +1,14 @@
-import { AxiosInstance } from 'axios';
-import { MonoCloudConfig } from '@monocloud/sdk-js-core';
+import { MonoCloudConfig, Fetcher } from '@monocloud/sdk-js-core';
 import { UsersClient } from './clients';
 
 export class MonoCloudUsersBackendClient extends UsersClient {
-  private constructor(options: MonoCloudConfig, instance?: AxiosInstance) {
-    super(options, instance);
+  private constructor(options: MonoCloudConfig, fetcher?: Fetcher) {
+    super(options, fetcher);
   }
 
   public static init(
     options?: MonoCloudConfig,
-    instance?: AxiosInstance
+    fetcher?: Fetcher
   ): MonoCloudUsersBackendClient {
     const envTimeout = parseInt(process.env.MC_USERS_BACKEND_TIMEOUT ?? '', 10);
 
@@ -17,9 +16,6 @@ export class MonoCloudUsersBackendClient extends UsersClient {
       domain: options?.domain ?? process.env.MC_USERS_BACKEND_DOMAIN ?? '',
       apiKey: options?.apiKey ?? process.env.MC_USERS_BACKEND_API_KEY ?? '',
       config: options?.config ?? {
-        retry:
-          options?.config?.retry ??
-          process.env.MC_USERS_BACKEND_RETRY === 'true',
         timeout:
           options?.config?.timeout ??
           (Number.isInteger(envTimeout) && envTimeout > 0)
@@ -28,6 +24,6 @@ export class MonoCloudUsersBackendClient extends UsersClient {
       },
     };
 
-    return new MonoCloudUsersBackendClient(opt, instance);
+    return new MonoCloudUsersBackendClient(opt, fetcher);
   }
 }
