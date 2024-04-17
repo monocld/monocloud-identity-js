@@ -272,4 +272,16 @@ describe('MonoCloud Users Backed SDK Tests', () => {
       );
     }
   });
+
+  test('No content should handle correctly', async () => {
+    nockInst
+      .delete('/api/users/1')
+      .reply(204, {}, { 'Content-Type': 'application/problem+json' });
+
+    const result = await client.deleteUser('1');
+
+    nockInst.done();
+
+    expect(result.status).toBe(204);
+  });
 });
