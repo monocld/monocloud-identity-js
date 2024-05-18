@@ -195,7 +195,7 @@ export class UsersClient extends MonoCloudClientBase {
 
   /**
    *
-   * @summary Set a user\'s primary email
+   * @summary Set email as primary
    * @param {string} userId User Id
    * @param {string} identifierId The Id of the email to be set a primary.
    * @returns User - Successfully updated user\&#39;s primary email
@@ -221,7 +221,7 @@ export class UsersClient extends MonoCloudClientBase {
 
   /**
    *
-   * @summary Marks the specified email as verified.
+   * @summary Mark email as verified
    * @param {string} userId User Id
    * @param {string} identifierId The Id of the email to be marked as verified.
    * @returns User - Successfully updated user\&#39;s primary email
@@ -247,34 +247,7 @@ export class UsersClient extends MonoCloudClientBase {
 
   /**
    *
-   * @summary Enables the Email Authenticator for a user\'s email
-   * @param {string} userId User Id
-   * @param {string} identifierId The Id of the email for which the email authenticator should be enabled.
-   * @returns User - Successfully enabled the user
-   * @throws {MonoCloudException}
-   * @memberof UsersClient
-   *
-   */
-  public enableEmailAuthenticator(
-    userId: string,
-    identifierId: string
-  ): Promise<MonoCloudResponse<User>> {
-    const url =
-      `/users/{user_id}/emails/{identifier_id}/email_authenticator/enable`
-        .replace(`{${'user_id'}}`, encodeURIComponent(String(userId)))
-        .replace(
-          `{${'identifier_id'}}`,
-          encodeURIComponent(String(identifierId))
-        );
-
-    const request: MonoCloudRequest = { method: 'POST', url };
-
-    return this.processRequest<User>(request);
-  }
-
-  /**
-   *
-   * @summary Set a user\'s primary phone
+   * @summary Set phone as primary
    * @param {string} userId User Id
    * @param {string} identifierId The Id of the phone to be set a primary.
    * @returns User - Successfully updated user\&#39;s primary phone
@@ -300,7 +273,7 @@ export class UsersClient extends MonoCloudClientBase {
 
   /**
    *
-   * @summary Marks the specified phone as verified.
+   * @summary Mark phone as verified
    * @param {string} userId User Id
    * @param {string} identifierId The Id of the phone to be set verified.
    * @returns User - Success
@@ -326,34 +299,7 @@ export class UsersClient extends MonoCloudClientBase {
 
   /**
    *
-   * @summary Enables the Phone Authenticator for a user\'s phone
-   * @param {string} userId User Id
-   * @param {string} identifierId The Id of the phone for which the phone authenticator should be enabled.
-   * @returns User - Successfully enabled the user
-   * @throws {MonoCloudException}
-   * @memberof UsersClient
-   *
-   */
-  public enablePhoneAuthenticator(
-    userId: string,
-    identifierId: string
-  ): Promise<MonoCloudResponse<User>> {
-    const url =
-      `/users/{user_id}/phones/{identifier_id}/phone_authenticator/enable`
-        .replace(`{${'user_id'}}`, encodeURIComponent(String(userId)))
-        .replace(
-          `{${'identifier_id'}}`,
-          encodeURIComponent(String(identifierId))
-        );
-
-    const request: MonoCloudRequest = { method: 'POST', url };
-
-    return this.processRequest<User>(request);
-  }
-
-  /**
-   *
-   * @summary Get a user\'s private data
+   * @summary Get user private data
    * @param {string} userId User Id
    * @returns UserPrivateData - Successfully retrieved user\&#39;s private data
    * @throws {MonoCloudException}
@@ -375,7 +321,7 @@ export class UsersClient extends MonoCloudClientBase {
 
   /**
    *
-   * @summary Updates fields for the user\'s private data
+   * @summary Update user private data
    * @param {string} userId User Id
    * @param {UpdatePrivateDataRequest} updatePrivateDataRequest Data to be updated
    * @returns UserPrivateData - Successfully updated the fields for the user\&#39;s private data
@@ -401,7 +347,7 @@ export class UsersClient extends MonoCloudClientBase {
 
   /**
    *
-   * @summary Get a user\'s public data
+   * @summary Get user public data
    * @param {string} userId User Id
    * @returns UserPublicData - Successfully retrieved user\&#39;s public data
    * @throws {MonoCloudException}
@@ -423,7 +369,7 @@ export class UsersClient extends MonoCloudClientBase {
 
   /**
    *
-   * @summary Updates fields for the user\'s public data
+   * @summary Update user public data
    * @param {string} userId User Id
    * @param {UpdatePublicDataRequest} updatePublicDataRequest Data to be updated
    * @returns UserPublicData - Successfully updated the fields for the user\&#39;s public data
@@ -449,7 +395,7 @@ export class UsersClient extends MonoCloudClientBase {
 
   /**
    *
-   * @summary Get a list of blocked ips
+   * @summary Get all blocked ips
    * @param {string} userId User Id
    * @param {number} [page] Page Number
    * @param {number} [size] Page Size
@@ -523,7 +469,7 @@ export class UsersClient extends MonoCloudClientBase {
 
   /**
    *
-   * @summary Get all sessions for the specified user
+   * @summary Get all sessions
    * @param {string} userId User Id
    * @param {number} [page] Page Number
    * @param {number} [size] Page Size
@@ -571,7 +517,7 @@ export class UsersClient extends MonoCloudClientBase {
 
   /**
    *
-   * @summary Revoke a user session
+   * @summary Revoke a session
    * @param {string} userId User Id
    * @param {string} sessionId Session Id
    * @returns No Content
@@ -594,7 +540,7 @@ export class UsersClient extends MonoCloudClientBase {
 
   /**
    *
-   * @summary Disconnect an External Authenticator from a user
+   * @summary Disconnect External Authenticator
    * @param {string} userId User Id
    * @param {ExternalAuthenticatorDisconnectRequest} externalAuthenticatorDisconnectRequest Idp disconnect data
    * @returns User - Success
