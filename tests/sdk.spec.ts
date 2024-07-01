@@ -42,7 +42,7 @@ describe('MonoCloud Users Backed SDK Tests', () => {
       })
       .reply(200, {});
 
-    await client.externalAuthenticatorDisconnectEndpoint('user', {
+    await client.externalAuthenticatorDisconnect('user', {
       authenticator: ExternalAuthenticators.Apple,
     } as ExternalAuthenticatorDisconnectRequest);
 
