@@ -473,7 +473,7 @@ export class UsersClient extends MonoCloudClientBase {
    * @param {string} userId User Id
    * @param {number} [page] Page Number
    * @param {number} [size] Page Size
-   * @param {string} [filter] Client Id by which the user sessions needs to be filtered.
+   * @param {string} [clientId] Client Id by which the user sessions needs to be filtered.
    * @param {string} [sort] Value in \'sort_key:sort_order\' format, by which results will be sorted. Sort order value can be \'1\' for ascending and \'-1\' for descending.  Acceptable sort key values are \'session_id\', \'initiated_at\', \'expires_at\' and \'last_updated\'
    * @returns UserSession[] - Successfully retrieved users
    * @throws {MonoCloudException}
@@ -484,7 +484,7 @@ export class UsersClient extends MonoCloudClientBase {
     userId: string,
     page?: number,
     size?: number,
-    filter?: string,
+    clientId?: string,
     sort?: string
   ): Promise<MonoCloudPageResponse<UserSession[]>> {
     const url = `/users/{user_id}/sessions`.replace(
@@ -504,8 +504,8 @@ export class UsersClient extends MonoCloudClientBase {
       request.queryParams.size = String(size);
     }
 
-    if (filter !== undefined && filter !== null) {
-      request.queryParams.filter = String(filter);
+    if (clientId !== undefined && clientId !== null) {
+      request.queryParams.clientId = String(clientId);
     }
 
     if (sort !== undefined && sort !== null) {
