@@ -16,6 +16,7 @@ export * from './user-email';
 export * from './user-id-p';
 export * from './user-id-psummary';
 export * from './user-ip-access-details';
+export * from './user-passkey';
 export * from './user-phone';
 export * from './user-private-data';
 export * from './user-public-data';

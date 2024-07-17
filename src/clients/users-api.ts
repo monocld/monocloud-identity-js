@@ -563,4 +563,27 @@ export class UsersClient extends MonoCloudClientBase {
 
     return this.processRequest<User>(request);
   }
+
+  /**
+   *
+   * @summary Delete a Passkey
+   * @param {string} userId User Id
+   * @param {string} passkeyId Passkey Id
+   * @returns No Content
+   * @throws {MonoCloudException}
+   * @memberof UsersClient
+   *
+   */
+  public deleteUserPasskey(
+    userId: string,
+    passkeyId: string
+  ): Promise<MonoCloudResponse<null>> {
+    const url = `/users/{user_id}/passkey/{passkey_id}`
+      .replace(`{${'user_id'}}`, encodeURIComponent(String(userId)))
+      .replace(`{${'passkey_id'}}`, encodeURIComponent(String(passkeyId)));
+
+    const request: MonoCloudRequest = { method: 'DELETE', url };
+
+    return this.processRequest<null>(request);
+  }
 }
