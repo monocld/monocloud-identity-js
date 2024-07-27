@@ -12,6 +12,10 @@ export const Authenticators = {
   /**
    *
    */
+  Passkey: 'passkey',
+  /**
+   *
+   */
   Email: 'email',
   /**
    *
@@ -53,6 +57,10 @@ export const Authenticators = {
    *
    */
   Linkedin: 'linkedin',
+  /**
+   *
+   */
+  Xero: 'xero',
 } as const;
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare

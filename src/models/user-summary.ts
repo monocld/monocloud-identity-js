@@ -1,5 +1,6 @@
 import { UserEmail } from './user-email';
 import { UserIdPSummary } from './user-id-psummary';
+import { UserPasskey } from './user-passkey';
 import { UserPhone } from './user-phone';
 import { UserUsername } from './user-username';
 
@@ -39,6 +40,12 @@ export interface UserSummary {
    * @memberof UserSummary
    */
   phone_numbers: UserPhone[];
+  /**
+   * List of registered passkeys of user
+   * @type {UserPasskey[]}
+   * @memberof UserSummary
+   */
+  passkeys: UserPasskey[];
   /**
    * List of registered idps of user
    * @type {UserIdPSummary[]}
