@@ -5,12 +5,6 @@
  */
 export interface UserPasskey {
   /**
-   * Unique identifier of the passkey
-   * @type {string}
-   * @memberof UserPasskey
-   */
-  id: string;
-  /**
    * A human-readable name for the passkey
    * @type {string}
    * @memberof UserPasskey

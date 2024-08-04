@@ -540,6 +540,29 @@ export class UsersClient extends MonoCloudClientBase {
 
   /**
    *
+   * @summary Remove Passkey
+   * @param {string} userId User Id
+   * @param {string} passkeyId The passkey id of the passkey to remove
+   * @returns No Content
+   * @throws {MonoCloudException}
+   * @memberof UsersClient
+   *
+   */
+  public removePasskey(
+    userId: string,
+    passkeyId: string
+  ): Promise<MonoCloudResponse<null>> {
+    const url = `/users/{user_id}/passkeys/{passkey_id}`
+      .replace(`{${'user_id'}}`, encodeURIComponent(String(userId)))
+      .replace(`{${'passkey_id'}}`, encodeURIComponent(String(passkeyId)));
+
+    const request: MonoCloudRequest = { method: 'DELETE', url };
+
+    return this.processRequest<null>(request);
+  }
+
+  /**
+   *
    * @summary Disconnect External Authenticator
    * @param {string} userId User Id
    * @param {ExternalAuthenticatorDisconnectRequest} externalAuthenticatorDisconnectRequest Idp disconnect data
