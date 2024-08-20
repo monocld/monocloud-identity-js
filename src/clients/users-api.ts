@@ -12,6 +12,7 @@ import {
   UpdatePrivateDataRequest,
   UpdatePublicDataRequest,
   User,
+  UserGroup,
   UserIpAccessDetails,
   UserPrivateData,
   UserPublicData,
@@ -585,5 +586,212 @@ export class UsersClient extends MonoCloudClientBase {
     request.body = externalAuthenticatorDisconnectRequest;
 
     return this.processRequest<User>(request);
+  }
+
+  /**
+   *
+   * @summary Gets all Groups a user is assigned to
+   * @param {string} userId User Id
+   * @param {number} [page] Page Number
+   * @param {number} [size] Page Size
+   * @param {string} [sort] Value in \'sort_key:sort_order\' format, by which results will be sorted. Sort order value can be \'1\' for ascending and \'-1\' for descending.  Acceptable sort key value is \'creation_time\'
+   * @returns UserGroup[] - Success
+   * @throws {MonoCloudException}
+   * @memberof UsersClient
+   *
+   */
+  public getAllUserGroups(
+    userId: string,
+    page?: number,
+    size?: number,
+    sort?: string
+  ): Promise<MonoCloudPageResponse<UserGroup[]>> {
+    const url = `/users/{user_id}/groups`.replace(
+      `{${'user_id'}}`,
+      encodeURIComponent(String(userId))
+    );
+
+    const request: MonoCloudRequest = { method: 'GET', url };
+
+    request.queryParams = {};
+
+    if (page !== undefined && page !== null) {
+      request.queryParams.page = String(page);
+    }
+
+    if (size !== undefined && size !== null) {
+      request.queryParams.size = String(size);
+    }
+
+    if (sort !== undefined && sort !== null) {
+      request.queryParams.sort = String(sort);
+    }
+
+    return this.processPaginatedRequest<UserGroup[]>(request);
+  }
+
+  /**
+   *
+   * @summary Finds a User Group by Id
+   * @param {string} userId User Id
+   * @param {string} groupId Group Id
+   * @returns UserGroup - Success
+   * @throws {MonoCloudException}
+   * @memberof UsersClient
+   *
+   */
+  public findUserGroup(
+    userId: string,
+    groupId: string
+  ): Promise<MonoCloudResponse<UserGroup>> {
+    const url = `/users/{user_id}/groups/{group_id}`
+      .replace(`{${'user_id'}}`, encodeURIComponent(String(userId)))
+      .replace(`{${'group_id'}}`, encodeURIComponent(String(groupId)));
+
+    const request: MonoCloudRequest = { method: 'GET', url };
+
+    return this.processRequest<UserGroup>(request);
+  }
+
+  /**
+   *
+   * @summary Assigns a user to a group
+   * @param {string} userId User Id
+   * @param {string} groupId Group Id
+   * @returns Created
+   * @throws {MonoCloudException}
+   * @memberof UsersClient
+   *
+   */
+  public assignUserToGroup(
+    userId: string,
+    groupId: string
+  ): Promise<MonoCloudResponse<null>> {
+    const url = `/users/{user_id}/groups/{group_id}`
+      .replace(`{${'user_id'}}`, encodeURIComponent(String(userId)))
+      .replace(`{${'group_id'}}`, encodeURIComponent(String(groupId)));
+
+    const request: MonoCloudRequest = { method: 'POST', url };
+
+    return this.processRequest<null>(request);
+  }
+
+  /**
+   *
+   * @summary Remove a user from a group
+   * @param {string} userId User Id
+   * @param {string} groupId Group Id
+   * @returns No Content
+   * @throws {MonoCloudException}
+   * @memberof UsersClient
+   *
+   */
+  public removeUserFromGroup(
+    userId: string,
+    groupId: string
+  ): Promise<MonoCloudResponse<null>> {
+    const url = `/users/{user_id}/groups/{group_id}`
+      .replace(`{${'user_id'}}`, encodeURIComponent(String(userId)))
+      .replace(`{${'group_id'}}`, encodeURIComponent(String(groupId)));
+
+    const request: MonoCloudRequest = { method: 'DELETE', url };
+
+    return this.processRequest<null>(request);
+  }
+
+  /**
+   *
+   * @summary Get all Users assigned to a Group
+   * @param {string} groupId Group Id
+   * @param {number} [page] Page Number
+   * @param {number} [size] Page Size
+   * @param {string} [filter] Value by which the users needs to be filtered.
+   * @param {string} [sort] Value in \'sort_key:sort_order\' format, by which results will be sorted. Sort order value can be \'1\' for ascending and \'-1\' for descending.  Acceptable sort key values are \'given_name\', \'middle_name\', \'family_name\', \'name\', \'creation_time\', and \'last_updated\'
+   * @returns UserSummary[] - Success
+   * @throws {MonoCloudException}
+   * @memberof UsersClient
+   *
+   */
+  public getAllGroupAssignedUsers(
+    groupId: string,
+    page?: number,
+    size?: number,
+    filter?: string,
+    sort?: string
+  ): Promise<MonoCloudPageResponse<UserSummary[]>> {
+    const url = `/users/groups/{group_id}/assigned`.replace(
+      `{${'group_id'}}`,
+      encodeURIComponent(String(groupId))
+    );
+
+    const request: MonoCloudRequest = { method: 'GET', url };
+
+    request.queryParams = {};
+
+    if (page !== undefined && page !== null) {
+      request.queryParams.page = String(page);
+    }
+
+    if (size !== undefined && size !== null) {
+      request.queryParams.size = String(size);
+    }
+
+    if (filter !== undefined && filter !== null) {
+      request.queryParams.filter = String(filter);
+    }
+
+    if (sort !== undefined && sort !== null) {
+      request.queryParams.sort = String(sort);
+    }
+
+    return this.processPaginatedRequest<UserSummary[]>(request);
+  }
+
+  /**
+   *
+   * @summary Get all Users not assigned to a Group
+   * @param {string} groupId Group Id
+   * @param {number} [page] Page Number
+   * @param {number} [size] Page Size
+   * @param {string} [filter] Value by which the users needs to be filtered.
+   * @param {string} [sort] Value in \'sort_key:sort_order\' format, by which results will be sorted. Sort order value can be \'1\' for ascending and \'-1\' for descending.  Acceptable sort key values are \'given_name\', \'middle_name\', \'family_name\', \'name\', \'creation_time\', and \'last_updated\'
+   * @returns UserSummary[] - Success
+   * @throws {MonoCloudException}
+   * @memberof UsersClient
+   *
+   */
+  public getAllGroupUnassignedUsers(
+    groupId: string,
+    page?: number,
+    size?: number,
+    filter?: string,
+    sort?: string
+  ): Promise<MonoCloudPageResponse<UserSummary[]>> {
+    const url = `/users/groups/{group_id}/unassigned`.replace(
+      `{${'group_id'}}`,
+      encodeURIComponent(String(groupId))
+    );
+
+    const request: MonoCloudRequest = { method: 'GET', url };
+
+    request.queryParams = {};
+
+    if (page !== undefined && page !== null) {
+      request.queryParams.page = String(page);
+    }
+
+    if (size !== undefined && size !== null) {
+      request.queryParams.size = String(size);
+    }
+
+    if (filter !== undefined && filter !== null) {
+      request.queryParams.filter = String(filter);
+    }
+
+    if (sort !== undefined && sort !== null) {
+      request.queryParams.sort = String(sort);
+    }
+
+    return this.processPaginatedRequest<UserSummary[]>(request);
   }
 }

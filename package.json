@@ -1,20 +1,20 @@
 {
-  "name": "@monocloud/users-backend-js",
-  "version": "0.5.4",
-  "description": "MonoCloud Users Backend JavaScript SDK",
+  "name": "@monocloud/identity-js",
+  "version": "0.5.5",
+  "description": "MonoCloud Identity JavaScript SDK",
   "keywords": [
     "monocloud",
-    "usersbackend",
+    "identity",
     "sdk",
     "node"
   ],
   "homepage": "https://www.monocloud.com",
   "bugs": {
-    "url": "https://github.com/MonoCld/monocloud-users-backend-js/issues"
+    "url": "https://github.com/MonoCld/monocloud-identity-js/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MonoCld/monocloud-users-backend-js.git"
+    "url": "git+https://github.com/MonoCld/monocloud-identity-js.git"
   },
   "license": "MIT",
   "author": {

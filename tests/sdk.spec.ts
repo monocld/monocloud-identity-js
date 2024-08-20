@@ -8,15 +8,15 @@ import {
   MonoCloudKeyValidationException,
   MonoCloudServerException,
   MonoCloudBadRequestException,
-  MonoCloudUsersBackendClient,
+  MonoCloudIdentityClient,
 } from '../src';
 
-describe('MonoCloud Users Backed SDK Tests', () => {
-  let client: MonoCloudUsersBackendClient;
+describe('MonoCloud Identity SDK Tests', () => {
+  let client: MonoCloudIdentityClient;
   let nockInst: nock.Scope;
 
   beforeEach(() => {
-    client = MonoCloudUsersBackendClient.init({
+    client = MonoCloudIdentityClient.init({
       domain: 'example.com',
       apiKey: 'someKey',
     });
@@ -30,7 +30,7 @@ describe('MonoCloud Users Backed SDK Tests', () => {
   test('Create should only send set fields', async () => {
     nockInst.post('/api/users', { name: 'user' }).reply(201, {});
 
-    await client.createUser({ name: 'user' });
+    await client.users.createUser({ name: 'user' });
 
     nockInst.done();
   });
@@ -42,7 +42,7 @@ describe('MonoCloud Users Backed SDK Tests', () => {
       })
       .reply(200, {});
 
-    await client.externalAuthenticatorDisconnect('user', {
+    await client.users.externalAuthenticatorDisconnect('user', {
       authenticator: ExternalAuthenticators.Apple,
     } as ExternalAuthenticatorDisconnectRequest);
 
@@ -58,7 +58,7 @@ describe('MonoCloud Users Backed SDK Tests', () => {
       })
       .reply(200, {});
 
-    await client.patchPrivateData('1234', {
+    await client.users.patchPrivateData('1234', {
       private_data: {
         hello: 'world',
       },
@@ -76,7 +76,7 @@ describe('MonoCloud Users Backed SDK Tests', () => {
       })
       .reply(200, {});
 
-    await client.patchPrivateData('1234', {
+    await client.users.patchPrivateData('1234', {
       private_data: {
         Test: null,
       },
@@ -88,7 +88,7 @@ describe('MonoCloud Users Backed SDK Tests', () => {
   test('Get should receive correct nullable datetime', async () => {
     nockInst.get('/api/users/1234').reply(200, { last_updated: null });
 
-    const result = await client.findUserById('1234');
+    const result = await client.users.findUserById('1234');
 
     expect(result.result.last_updated).toBeNull();
   });
@@ -99,7 +99,7 @@ describe('MonoCloud Users Backed SDK Tests', () => {
         '{"total_count":20,"page_size":2,"current_page":3,"has_next":true,"has_previous":true}',
     });
 
-    const result = await client.getAllUsers();
+    const result = await client.users.getAllUsers();
 
     expect(result.result.length).toBe(2);
     expect(result.pageData.total_count).toBe(20);
@@ -112,7 +112,7 @@ describe('MonoCloud Users Backed SDK Tests', () => {
   test('Get with paging should handle no pagination header', async () => {
     nockInst.get('/api/users').reply(200, [{}, {}]);
 
-    const result = await client.getAllUsers();
+    const result = await client.users.getAllUsers();
 
     expect(result.result.length).toBe(2);
     expect(result.pageData.total_count).toBe(0);
@@ -151,7 +151,7 @@ describe('MonoCloud Users Backed SDK Tests', () => {
     );
 
     try {
-      await client.createUser({});
+      await client.users.createUser({});
       throw new Error('Invalid');
     } catch (error: unknown) {
       expect(error).toBeInstanceOf(MonoCloudErrorCodeValidationException);
@@ -190,7 +190,7 @@ describe('MonoCloud Users Backed SDK Tests', () => {
     );
 
     try {
-      await client.createUser({});
+      await client.users.createUser({});
       throw new Error('Invalid');
     } catch (error: unknown) {
       expect(error).toBeInstanceOf(MonoCloudKeyValidationException);
@@ -225,7 +225,7 @@ describe('MonoCloud Users Backed SDK Tests', () => {
     );
 
     try {
-      await client.createUser({});
+      await client.users.createUser({});
       throw new Error('Invalid');
     } catch (error: unknown) {
       expect(error).toBeInstanceOf(MonoCloudServerException);
@@ -256,7 +256,7 @@ describe('MonoCloud Users Backed SDK Tests', () => {
     );
 
     try {
-      await client.createUser({});
+      await client.users.createUser({});
       throw new Error('Invalid');
     } catch (error: unknown) {
       expect(error).toBeInstanceOf(MonoCloudBadRequestException);
@@ -278,7 +278,7 @@ describe('MonoCloud Users Backed SDK Tests', () => {
       .delete('/api/users/1')
       .reply(204, {}, { 'Content-Type': 'application/problem+json' });
 
-    const result = await client.deleteUser('1');
+    const result = await client.users.deleteUser('1');
 
     nockInst.done();
 

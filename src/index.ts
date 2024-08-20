@@ -18,9 +18,9 @@ import {
   KeyValidationProblemDetails,
   Fetcher,
 } from '@monocloud/sdk-js-core';
-import { MonoCloudUsersBackendClient } from './monocloud-usersbackend-client';
+import { MonoCloudIdentityClient } from './monocloud-identity-client';
 
-export { MonoCloudUsersBackendClient, MonoCloudResponse };
+export { MonoCloudIdentityClient, MonoCloudResponse };
 export type { MonoCloudConfig, ErrorCodeValidationError, Fetcher };
 export {
   MonoCloudException,

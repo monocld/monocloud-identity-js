@@ -1,1 +1,1 @@
-# MonoCloud Users Backend JavaScript SDK
+# MonoCloud Identity JavaScript SDK
