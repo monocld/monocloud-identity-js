@@ -541,7 +541,7 @@ export class UsersClient extends MonoCloudClientBase {
 
   /**
    *
-   * @summary Remove Passkey
+   * @summary Remove passkey
    * @param {string} userId User Id
    * @param {string} passkeyId The passkey id of the passkey to remove
    * @returns No Content
@@ -564,7 +564,7 @@ export class UsersClient extends MonoCloudClientBase {
 
   /**
    *
-   * @summary Disconnect External Authenticator
+   * @summary Disconnect external authenticator
    * @param {string} userId User Id
    * @param {ExternalAuthenticatorDisconnectRequest} externalAuthenticatorDisconnectRequest Idp disconnect data
    * @returns User - Success
@@ -590,7 +590,7 @@ export class UsersClient extends MonoCloudClientBase {
 
   /**
    *
-   * @summary Gets all Groups a user is assigned to
+   * @summary Get all user\'s groups
    * @param {string} userId User Id
    * @param {number} [page] Page Number
    * @param {number} [size] Page Size
@@ -632,7 +632,7 @@ export class UsersClient extends MonoCloudClientBase {
 
   /**
    *
-   * @summary Finds a User Group by Id
+   * @summary Get a user group
    * @param {string} userId User Id
    * @param {string} groupId Group Id
    * @returns UserGroup - Success
@@ -655,7 +655,7 @@ export class UsersClient extends MonoCloudClientBase {
 
   /**
    *
-   * @summary Assigns a user to a group
+   * @summary Assign user to group
    * @param {string} userId User Id
    * @param {string} groupId Group Id
    * @returns Created
@@ -678,7 +678,7 @@ export class UsersClient extends MonoCloudClientBase {
 
   /**
    *
-   * @summary Remove a user from a group
+   * @summary Remove user from group
    * @param {string} userId User Id
    * @param {string} groupId Group Id
    * @returns No Content
@@ -701,7 +701,7 @@ export class UsersClient extends MonoCloudClientBase {
 
   /**
    *
-   * @summary Get all Users assigned to a Group
+   * @summary Get all users in group
    * @param {string} groupId Group Id
    * @param {number} [page] Page Number
    * @param {number} [size] Page Size
@@ -720,54 +720,6 @@ export class UsersClient extends MonoCloudClientBase {
     sort?: string
   ): Promise<MonoCloudPageResponse<UserSummary[]>> {
     const url = `/users/groups/{group_id}/assigned`.replace(
-      `{${'group_id'}}`,
-      encodeURIComponent(String(groupId))
-    );
-
-    const request: MonoCloudRequest = { method: 'GET', url };
-
-    request.queryParams = {};
-
-    if (page !== undefined && page !== null) {
-      request.queryParams.page = String(page);
-    }
-
-    if (size !== undefined && size !== null) {
-      request.queryParams.size = String(size);
-    }
-
-    if (filter !== undefined && filter !== null) {
-      request.queryParams.filter = String(filter);
-    }
-
-    if (sort !== undefined && sort !== null) {
-      request.queryParams.sort = String(sort);
-    }
-
-    return this.processPaginatedRequest<UserSummary[]>(request);
-  }
-
-  /**
-   *
-   * @summary Get all Users not assigned to a Group
-   * @param {string} groupId Group Id
-   * @param {number} [page] Page Number
-   * @param {number} [size] Page Size
-   * @param {string} [filter] Value by which the users needs to be filtered.
-   * @param {string} [sort] Value in \'sort_key:sort_order\' format, by which results will be sorted. Sort order value can be \'1\' for ascending and \'-1\' for descending.  Acceptable sort key values are \'given_name\', \'middle_name\', \'family_name\', \'name\', \'creation_time\', and \'last_updated\'
-   * @returns UserSummary[] - Success
-   * @throws {MonoCloudException}
-   * @memberof UsersClient
-   *
-   */
-  public getAllGroupUnassignedUsers(
-    groupId: string,
-    page?: number,
-    size?: number,
-    filter?: string,
-    sort?: string
-  ): Promise<MonoCloudPageResponse<UserSummary[]>> {
-    const url = `/users/groups/{group_id}/unassigned`.replace(
       `{${'group_id'}}`,
       encodeURIComponent(String(groupId))
     );
