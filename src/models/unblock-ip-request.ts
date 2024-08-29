@@ -1,11 +1,11 @@
 /**
- * The Unblock Ip Request class.
+ * The Unblock IP Request class.
  * @export
  * @interface UnblockIpRequest
  */
 export interface UnblockIpRequest {
   /**
-   * The ip address to be unblocked. Use \'all\' for unblocking all the ip addresses.
+   * The IP address to be unblocked. Use \'all\' to unblock all IP addresses associated with the user.
    * @type {string}
    * @memberof UnblockIpRequest
    */

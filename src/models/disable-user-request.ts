@@ -1,11 +1,11 @@
 /**
- * The Unblock Ip Request class.
+ * The Disable User Request class.
  * @export
  * @interface DisableUserRequest
  */
 export interface DisableUserRequest {
   /**
-   * Specifies whether to revoke all sessions associated with the user.
+   * Indicates whether to revoke all sessions associated with the user when disabling the account.
    * @type {boolean}
    * @memberof DisableUserRequest
    */

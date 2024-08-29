@@ -13,7 +13,7 @@ export interface UserSession {
    */
   session_key: string;
   /**
-   * The unique identifier of the session
+   * The unique ID of the session
    * @type {string}
    * @memberof UserSession
    */

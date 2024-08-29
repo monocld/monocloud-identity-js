@@ -7,13 +7,13 @@ import { ExternalAuthenticators } from './external-authenticators';
  */
 export interface ExternalAuthenticatorDisconnectRequest {
   /**
-   * External Authenticator to be disconnected
+   * The external authenticator to be disconnected.
    * @type {ExternalAuthenticators}
    * @memberof ExternalAuthenticatorDisconnectRequest
    */
   authenticator: ExternalAuthenticators;
   /**
-   * Provider User Id of the external authenticator.
+   * The ID of the user in the external provider\'s system.
    * @type {string}
    * @memberof ExternalAuthenticatorDisconnectRequest
    */

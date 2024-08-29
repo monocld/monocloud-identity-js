@@ -5,73 +5,73 @@
  */
 export interface CreateUserRequest {
   /**
-   * The user\'s username
+   * The unique username for the user.
    * @type {string}
    * @memberof CreateUserRequest
    */
   username?: string | null;
   /**
-   * The User\'s email
+   * The user\'s email address.
    * @type {string}
    * @memberof CreateUserRequest
    */
   email?: string | null;
   /**
-   * Specifies whether the email is verified or not.
+   * Indicates whether the user\'s email address is verified.
    * @type {boolean}
    * @memberof CreateUserRequest
    */
   email_verified?: boolean | null;
   /**
-   * The user\'s phone number
+   * The user\'s phone number, starting with a `+` followed by the country code.
    * @type {string}
    * @memberof CreateUserRequest
    */
   phone_number?: string | null;
   /**
-   * Specifies whether the phone number is verified or not.
+   * Indicates whether the user\'s phone number is verified.
    * @type {boolean}
    * @memberof CreateUserRequest
    */
   phone_number_verified?: boolean | null;
   /**
-   * The password for the user
+   * The password for the user, which will be used for authentication.
    * @type {string}
    * @memberof CreateUserRequest
    */
   password?: string | null;
   /**
-   * The user\'s name
+   * The user\'s full name.
    * @type {string}
    * @memberof CreateUserRequest
    */
   name?: string | null;
   /**
-   * The user\'s first name
+   * The user\'s given (first) name.
    * @type {string}
    * @memberof CreateUserRequest
    */
   given_name?: string | null;
   /**
-   * The user\'s middle name
+   * The user\'s middle name or initial.
    * @type {string}
    * @memberof CreateUserRequest
    */
   middle_name?: string | null;
   /**
-   * The user\'s family name
+   * The user\'s family (last) name.
    * @type {string}
    * @memberof CreateUserRequest
    */
   family_name?: string | null;
   /**
-   * The user\'s nickname
+   * The user\'s preferred nickname.
    * @type {string}
    * @memberof CreateUserRequest
    */
   nickname?: string | null;
   /**
-   * The uri pointing to the user\'s picture
+   * The URI pointing to the user\'s profile picture.
    * @type {string}
    * @memberof CreateUserRequest
    */

@@ -19,19 +19,19 @@ export interface Group {
    */
   type: GroupTypes;
   /**
-   * Gets or sets the name for this group.
+   * The name of the group.
    * @type {string}
    * @memberof Group
    */
   name: string;
   /**
-   * Gets or sets the description for this group.
+   * The description of the group.
    * @type {string}
    * @memberof Group
    */
   description?: string | null;
   /**
-   * Specifies if the group should be assigned to new users by default
+   * Specifies whether the group should be assigned to new users by default.
    * @type {boolean}
    * @memberof Group
    */
