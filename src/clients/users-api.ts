@@ -28,7 +28,7 @@ export class UsersClient extends MonoCloudClientBase {
    * @param {number} [page] The page number to retrieve.
    * @param {number} [size] The number of items per page.
    * @param {string} [filter] A query filter to apply when searching for users.
-   * @param {string} [sort] Specifies the sort criteria in the \'sort_key:sort_order\' format. The sort order value can be \'1\' for ascending and \'-1\' for descending.  Acceptable sort key values are \'given_name\', \'middle_name\', \'family_name\', \'name\', \'creation_time\', and \'last_updated\'.
+   * @param {string} [sort] Specifies the sort criteria in the \'sort_key:sort_order\' format. The sort order value can be \'1\' for ascending and \'-1\' for descending.  Acceptable sort key values are \'creation_time\', and \'last_updated\'.
    * @returns UserSummary[] - Successfully retrieved users
    * @throws {MonoCloudException}
    * @memberof UsersClient
@@ -589,7 +589,7 @@ export class UsersClient extends MonoCloudClientBase {
   }
 
   /**
-   * Retrieves a paginated list of groups that the specified user is assigned to. The endpoint allows you to specify optional search parameters to filter and refine the results.
+   * Retrieves a paginated list of groups that the specified user is assigned to.
    * @summary Get all user\'s groups
    * @param {string} userId The ID of the user whose group assignments should be retrieved.
    * @param {number} [page] The page number to retrieve.
@@ -706,7 +706,7 @@ export class UsersClient extends MonoCloudClientBase {
    * @param {number} [page] The page number to retrieve.
    * @param {number} [size] The number of items per page.
    * @param {string} [filter] A query filter to apply when searching for users.
-   * @param {string} [sort] Specifies the sort criteria in the \'sort_key:sort_order\' format. The sort order value can be \'1\' for ascending and \'-1\' for descending.  Acceptable sort key values are \'given_name\', \'middle_name\', \'family_name\', \'name\', \'creation_time\', and \'last_updated\'.
+   * @param {string} [sort] Specifies the sort criteria in the \'sort_key:sort_order\' format. The sort order value can be \'1\' for ascending and \'-1\' for descending.  Acceptable sort key values are \'creation_time\', and \'last_updated\'.
    * @returns UserSummary[] - Successfully retrieved users in group
    * @throws {MonoCloudException}
    * @memberof UsersClient
