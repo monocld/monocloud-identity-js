@@ -76,4 +76,22 @@ export interface CreateUserRequest {
    * @memberof CreateUserRequest
    */
   picture?: string | null;
+  /**
+   * Specifies whether the password policy check should be skipped.
+   * @type {boolean}
+   * @memberof CreateUserRequest
+   */
+  skip_password_policy_checks: boolean;
+  /**
+   * Specifies whether the identifier restriction checks should be skipped.
+   * @type {boolean}
+   * @memberof CreateUserRequest
+   */
+  skip_identifier_restriction_checks: boolean;
+  /**
+   * Specifies whether the users profile should conform to the options requirements.
+   * @type {boolean}
+   * @memberof CreateUserRequest
+   */
+  skip_conformance_checks: boolean;
 }

@@ -9,6 +9,7 @@ import {
   DisableUserRequest,
   ExternalAuthenticatorDisconnectRequest,
   UnblockIpRequest,
+  UpdateClaimsRequest,
   UpdatePrivateDataRequest,
   UpdatePublicDataRequest,
   User,
@@ -294,6 +295,32 @@ export class UsersClient extends MonoCloudClientBase {
       );
 
     const request: MonoCloudRequest = { method: 'POST', url };
+
+    return this.processRequest<User>(request);
+  }
+
+  /**
+   * Updates specified claims for the user. Only fields provided in the request will be updated. To unset a field, pass a null value.
+   * @summary Update user claims
+   * @param {string} userId The ID of the user whose claims should be updated.
+   * @param {UpdateClaimsRequest} updateClaimsRequest The update claims request.
+   * @returns User - Successfully updated the user claims
+   * @throws {MonoCloudException}
+   * @memberof UsersClient
+   *
+   */
+  public patchClaims(
+    userId: string,
+    updateClaimsRequest: UpdateClaimsRequest
+  ): Promise<MonoCloudResponse<User>> {
+    const url = `/users/{user_id}/claims`.replace(
+      `{${'user_id'}}`,
+      encodeURIComponent(String(userId))
+    );
+
+    const request: MonoCloudRequest = { method: 'PATCH', url };
+
+    request.body = updateClaimsRequest;
 
     return this.processRequest<User>(request);
   }

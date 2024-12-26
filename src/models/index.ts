@@ -13,6 +13,7 @@ export * from './patch-group-request';
 export * from './problem-details';
 export * from './theme-names';
 export * from './unblock-ip-request';
+export * from './update-claims-request';
 export * from './update-private-data-request';
 export * from './update-public-data-request';
 export * from './user';
