@@ -82,4 +82,52 @@ export interface UserSummary {
    * @memberof UserSummary
    */
   password_updated_at?: number | null;
+  /**
+   * Specifies whether the user has been locked out.
+   * @type {boolean}
+   * @memberof UserSummary
+   */
+  blocked: boolean;
+  /**
+   * Total number of sign-in attempts.
+   * @type {number}
+   * @memberof UserSummary
+   */
+  sign_in_attempts_count: number;
+  /**
+   * Specifies the time (in Epoch) at which the last sign in attempt was made.
+   * @type {number}
+   * @memberof UserSummary
+   */
+  last_sign_in_attempt?: number | null;
+  /**
+   * Specifies the ip address from which the last sign in attempt was made.
+   * @type {string}
+   * @memberof UserSummary
+   */
+  last_sign_in_attempt_ip?: string | null;
+  /**
+   * Specifies the time (in Epoch) at which the last activity of the user was recorded.
+   * @type {number}
+   * @memberof UserSummary
+   */
+  last_activity?: number | null;
+  /**
+   * The last known city of the user.
+   * @type {string}
+   * @memberof UserSummary
+   */
+  last_known_city?: string | null;
+  /**
+   * The last known country of the user.
+   * @type {string}
+   * @memberof UserSummary
+   */
+  last_known_country?: string | null;
+  /**
+   * The last known region of the user.
+   * @type {string}
+   * @memberof UserSummary
+   */
+  last_known_region?: string | null;
 }

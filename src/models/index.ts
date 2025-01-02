@@ -30,5 +30,4 @@ export * from './user-session';
 export * from './user-session-metadata';
 export * from './user-summary';
 export * from './user-username';
-export * from './user-with-access-details';
 export * from './value-types';

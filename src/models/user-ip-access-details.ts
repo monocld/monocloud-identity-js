@@ -5,7 +5,7 @@
  */
 export interface UserIpAccessDetails {
   /**
-   * Number of unsuccessful logins.
+   * Number of unsuccessful sign-ins.
    * @type {number}
    * @memberof UserIpAccessDetails
    */
@@ -21,7 +21,7 @@ export interface UserIpAccessDetails {
    * @type {number}
    * @memberof UserIpAccessDetails
    */
-  login_count: number;
+  sign_in_attempts_count: number;
   /**
    * Specifies the ip address from which the sign in attempt was made.
    * @type {string}
@@ -33,5 +33,5 @@ export interface UserIpAccessDetails {
    * @type {number}
    * @memberof UserIpAccessDetails
    */
-  last_login_attempt: number;
+  last_sign_in_attempt: number;
 }

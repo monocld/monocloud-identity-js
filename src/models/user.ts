@@ -5,7 +5,7 @@ import { UserPhone } from './user-phone';
 import { UserUsername } from './user-username';
 
 /**
- * The User Summary response class
+ * The User Response
  * @export
  * @interface User
  */
@@ -94,4 +94,52 @@ export interface User {
    * @memberof User
    */
   password_updated_at?: number | null;
+  /**
+   * Specifies whether the user has been locked out.
+   * @type {boolean}
+   * @memberof User
+   */
+  blocked: boolean;
+  /**
+   * Total number of sign-in attempts.
+   * @type {number}
+   * @memberof User
+   */
+  sign_in_attempts_count: number;
+  /**
+   * Specifies the time (in Epoch) at which the last sign in attempt was made.
+   * @type {number}
+   * @memberof User
+   */
+  last_sign_in_attempt?: number | null;
+  /**
+   * Specifies the ip address from which the last sign in attempt was made.
+   * @type {string}
+   * @memberof User
+   */
+  last_sign_in_attempt_ip?: string | null;
+  /**
+   * Specifies the time (in Epoch) at which the last activity of the user was recorded.
+   * @type {number}
+   * @memberof User
+   */
+  last_activity?: number | null;
+  /**
+   * The last known city of the user.
+   * @type {string}
+   * @memberof User
+   */
+  last_known_city?: string | null;
+  /**
+   * The last known country of the user.
+   * @type {string}
+   * @memberof User
+   */
+  last_known_country?: string | null;
+  /**
+   * The last known region of the user.
+   * @type {string}
+   * @memberof User
+   */
+  last_known_region?: string | null;
 }

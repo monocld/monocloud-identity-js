@@ -19,7 +19,6 @@ import {
   UserPublicData,
   UserSession,
   UserSummary,
-  UserWithAccessDetails,
 } from '../models';
 
 export class UsersClient extends MonoCloudClientBase {
@@ -91,14 +90,12 @@ export class UsersClient extends MonoCloudClientBase {
    * Retrieves profile information about a specific user, including attributes such as identifiers, first name, last name, and other relevant data associated with the user.
    * @summary Get a user
    * @param {string} userId The ID of the user whose profile information should be retrieved.
-   * @returns UserWithAccessDetails - Successfully retrieved the user
+   * @returns User - Successfully retrieved the user
    * @throws {MonoCloudException}
    * @memberof UsersClient
    *
    */
-  public findUserById(
-    userId: string
-  ): Promise<MonoCloudResponse<UserWithAccessDetails>> {
+  public findUserById(userId: string): Promise<MonoCloudResponse<User>> {
     const url = `/users/{user_id}`.replace(
       `{${'user_id'}}`,
       encodeURIComponent(String(userId))
@@ -106,7 +103,7 @@ export class UsersClient extends MonoCloudClientBase {
 
     const request: MonoCloudRequest = { method: 'GET', url };
 
-    return this.processRequest<UserWithAccessDetails>(request);
+    return this.processRequest<User>(request);
   }
 
   /**
@@ -422,13 +419,13 @@ export class UsersClient extends MonoCloudClientBase {
   }
 
   /**
-   * Retrieves a paginated list of IP addresses that have been blocked for the specified user. Each blocked IP entry includes details about the login attempts and the block duration. The endpoint allows you to specify optional search parameters to filter and refine the results.
+   * Retrieves a paginated list of IP addresses that have been blocked for the specified user. Each blocked IP entry includes details about the sign-in attempts and the block duration. The endpoint allows you to specify optional search parameters to filter and refine the results.
    * @summary Get all blocked IPs
    * @param {string} userId The ID of the user whose blocked IP addresses should be retrieved.
    * @param {number} [page] The page number to retrieve.
    * @param {number} [size] The number of items per page.
    * @param {string} [filter] A query filter to apply when searching for blocked IPs.
-   * @param {string} [sort] The sort criteria in \'sort_key:sort_order\' format. Sort order can be \'1\' for ascending and \'-1\' for descending.  Acceptable sort key values are \'block_until\' and \'last_login_attempt\'.
+   * @param {string} [sort] The sort criteria in \'sort_key:sort_order\' format. Sort order can be \'1\' for ascending and \'-1\' for descending.  Acceptable sort key values are \'block_until\' and \'last_sign_in_attempt\'.
    * @returns UserIpAccessDetails[] - Successfully retrieved user\&#39;s blocked IP addresses
    * @throws {MonoCloudException}
    * @memberof UsersClient
