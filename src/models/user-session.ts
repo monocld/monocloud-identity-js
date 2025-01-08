@@ -7,12 +7,6 @@ import { UserSessionMetadata } from './user-session-metadata';
  */
 export interface UserSession {
   /**
-   * The session key
-   * @type {string}
-   * @memberof UserSession
-   */
-  session_key: string;
-  /**
    * The unique ID of the session
    * @type {string}
    * @memberof UserSession
