@@ -289,12 +289,23 @@ describe('MonoCloud Identity SDK Tests', () => {
   test('No content should handle correctly', async () => {
     nockInst
       .delete('/api/users/1')
-      .reply(204, {}, { 'Content-Type': 'application/problem+json' });
+      .reply(204, {}, { 'Content-Type': 'application/json' });
 
     const result = await client.users.deleteUser('1');
 
     nockInst.done();
 
     expect(result.status).toBe(204);
+  });
+
+  test('Empty body should handle correctly', async () => {
+    nockInst.post('/api/users', { name: 'user' }).reply(201);
+
+    const result = await client.users.createUser({ name: 'user' });
+
+    nockInst.done();
+
+    expect(result.status).toBe(201);
+    expect(result.result).toBeNull();
   });
 });
