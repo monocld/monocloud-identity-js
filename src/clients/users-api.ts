@@ -682,7 +682,7 @@ export class UsersClient extends MonoCloudClientBase {
    * @summary Assign user to group
    * @param {string} userId The ID of the user to be assigned to the group.
    * @param {string} groupId The ID of the group to which the user will be assigned.
-   * @returns Successfully assigned the user to the group
+   * @returns UserGroup - Successfully assigned the user to the group
    * @throws {MonoCloudException}
    * @memberof UsersClient
    *
@@ -690,14 +690,14 @@ export class UsersClient extends MonoCloudClientBase {
   public assignUserToGroup(
     userId: string,
     groupId: string
-  ): Promise<MonoCloudResponse<null>> {
+  ): Promise<MonoCloudResponse<UserGroup>> {
     const url = `/users/{user_id}/groups/{group_id}`
       .replace(`{${'user_id'}}`, encodeURIComponent(String(userId)))
       .replace(`{${'group_id'}}`, encodeURIComponent(String(groupId)));
 
     const request: MonoCloudRequest = { method: 'POST', url };
 
-    return this.processRequest<null>(request);
+    return this.processRequest<UserGroup>(request);
   }
 
   /**
