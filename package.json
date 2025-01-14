@@ -1,6 +1,6 @@
 {
   "name": "@monocloud/identity-js",
-  "version": "0.6.5",
+  "version": "0.6.6",
   "description": "MonoCloud Identity JavaScript SDK",
   "keywords": [
     "monocloud",
@@ -36,7 +36,7 @@
     "test": "eslint tests --fix --quiet && jest"
   },
   "dependencies": {
-    "@monocloud/sdk-js-core": "0.3.2"
+    "@monocloud/sdk-js-core": "0.3.3"
   },
   "devDependencies": {
     "@types/jest": "29.5.13",
