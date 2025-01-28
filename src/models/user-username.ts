@@ -1,6 +1,3 @@
-import { Authenticators } from './authenticators';
-import { IdPs } from './id-ps';
-
 /**
  * The User Username response class
  * @export
@@ -14,21 +11,15 @@ export interface UserUsername {
    */
   id: string;
   /**
-   * A list of identity providers the username is connected to.
-   * @type {IdPs[]}
-   * @memberof UserUsername
-   */
-  idps: IdPs[];
-  /**
-   * A list of authenticators the username is connected to.
-   * @type {Authenticators[]}
-   * @memberof UserUsername
-   */
-  authenticators: Authenticators[];
-  /**
    * The username.
    * @type {string}
    * @memberof UserUsername
    */
   username: string;
+  /**
+   * Specifies where the username was originally collected from.
+   * @type {string}
+   * @memberof UserUsername
+   */
+  source?: string | null;
 }

@@ -1,5 +1,6 @@
+import { UserConnection } from './user-connection';
 import { UserEmail } from './user-email';
-import { UserIdPSummary } from './user-id-psummary';
+import { UserExternalProviderSummary } from './user-external-provider-summary';
 import { UserPasskey } from './user-passkey';
 import { UserPhone } from './user-phone';
 import { UserUsername } from './user-username';
@@ -22,6 +23,12 @@ export interface UserSummary {
    * @memberof UserSummary
    */
   disabled: boolean;
+  /**
+   * List of providers that the user account is connected to
+   * @type {UserConnection[]}
+   * @memberof UserSummary
+   */
+  connections: UserConnection[];
   /**
    * User\'s Claims
    * @type {{ [key: string]: any; }}
@@ -47,11 +54,17 @@ export interface UserSummary {
    */
   passkeys: UserPasskey[];
   /**
-   * List of registered idps of user
-   * @type {UserIdPSummary[]}
+   * A flag indicating that the user must change their password on next sign-in
+   * @type {boolean}
    * @memberof UserSummary
    */
-  idps: UserIdPSummary[];
+  force_password_reset: boolean;
+  /**
+   * List of registered external providers of user
+   * @type {UserExternalProviderSummary[]}
+   * @memberof UserSummary
+   */
+  external_providers: UserExternalProviderSummary[];
   /**
    * Specifies the creation time of the user (in Epoch)
    * @type {number}

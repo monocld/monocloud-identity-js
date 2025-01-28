@@ -1,21 +1,21 @@
 import { ExternalAuthenticators } from './external-authenticators';
 
 /**
- * The User IDP Summary response class
+ * The User External Provider Summary response class
  * @export
- * @interface UserIdPSummary
+ * @interface UserExternalProviderSummary
  */
-export interface UserIdPSummary {
+export interface UserExternalProviderSummary {
   /**
    * Specifies the External Authenticator.
    * @type {ExternalAuthenticators}
-   * @memberof UserIdPSummary
+   * @memberof UserExternalProviderSummary
    */
   authenticator: ExternalAuthenticators;
   /**
    * Specifies the idp user Id.
    * @type {string}
-   * @memberof UserIdPSummary
+   * @memberof UserExternalProviderSummary
    */
   provider_user_id: string;
 }

@@ -1,6 +1,3 @@
-import { Authenticators } from './authenticators';
-import { IdPs } from './id-ps';
-
 /**
  * The User Email response class
  * @export
@@ -20,23 +17,23 @@ export interface UserEmail {
    */
   primary: boolean;
   /**
-   * A list of identity providers the email is connected to.
-   * @type {IdPs[]}
-   * @memberof UserEmail
-   */
-  idps: IdPs[];
-  /**
-   * A list of authenticators the email is connected to.
-   * @type {Authenticators[]}
-   * @memberof UserEmail
-   */
-  authenticators: Authenticators[];
-  /**
    * Specifies whether the email is verified or not.
    * @type {boolean}
    * @memberof UserEmail
    */
   verified: boolean;
+  /**
+   * Specifies where the email was originally collected from.
+   * @type {string}
+   * @memberof UserEmail
+   */
+  source?: string | null;
+  /**
+   * Specifies where the email verification was done.
+   * @type {string}
+   * @memberof UserEmail
+   */
+  verification_source?: string | null;
   /**
    * The email id.
    * @type {string}

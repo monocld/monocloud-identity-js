@@ -530,7 +530,7 @@ export class UsersClient extends MonoCloudClientBase {
     }
 
     if (clientId !== undefined && clientId !== null) {
-      request.queryParams.clientId = String(clientId);
+      request.queryParams.client_id = String(clientId);
     }
 
     if (sort !== undefined && sort !== null) {

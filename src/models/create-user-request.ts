@@ -1,3 +1,5 @@
+import { PasswordAlgorithms } from './password-algorithms';
+
 /**
  * The Create User Request class.
  * @export
@@ -40,6 +42,18 @@ export interface CreateUserRequest {
    * @memberof CreateUserRequest
    */
   password?: string | null;
+  /**
+   * The password hash for the user, which will be used for authentication.
+   * @type {string}
+   * @memberof CreateUserRequest
+   */
+  password_hash?: string | null;
+  /**
+   * The algorithm used the hash the password for the user.
+   * @type {PasswordAlgorithms}
+   * @memberof CreateUserRequest
+   */
+  password_hash_algorithm?: PasswordAlgorithms;
   /**
    * The user\'s full name.
    * @type {string}
