@@ -120,6 +120,24 @@ export interface UserSummary {
    */
   last_sign_in_attempt_ip?: string | null;
   /**
+   * Total number of successful sign-ins.
+   * @type {number}
+   * @memberof UserSummary
+   */
+  sign_in_success_count: number;
+  /**
+   * Specifies the time (in Epoch) of the last successful sign-in.
+   * @type {number}
+   * @memberof UserSummary
+   */
+  last_sign_in_success?: number | null;
+  /**
+   * Specifies the ip address of the last successful sign-in.
+   * @type {string}
+   * @memberof UserSummary
+   */
+  last_sign_in_success_ip?: string | null;
+  /**
    * Specifies the time (in Epoch) at which the last activity of the user was recorded.
    * @type {number}
    * @memberof UserSummary

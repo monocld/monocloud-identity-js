@@ -55,6 +55,12 @@ export interface CreateUserRequest {
    */
   password_hash_algorithm?: PasswordAlgorithms;
   /**
+   * Specifies whether the specified password is temporary and will require the user to reset their password on the next sign-in.
+   * @type {boolean}
+   * @memberof CreateUserRequest
+   */
+  is_temporary_password?: boolean;
+  /**
    * The user\'s full name.
    * @type {string}
    * @memberof CreateUserRequest

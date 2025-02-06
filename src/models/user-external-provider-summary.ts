@@ -1,7 +1,7 @@
 import { ExternalAuthenticators } from './external-authenticators';
 
 /**
- * The User External Provider Summary response class
+ * The User External Provider summary response class
  * @export
  * @interface UserExternalProviderSummary
  */
