@@ -1143,7 +1143,7 @@ export class UsersClient extends MonoCloudClientBase {
    * @memberof UsersClient
    *
    */
-  public getallUserClientGrants(
+  public getAllUserClientGrants(
     userId: string,
     page?: number,
     size?: number
