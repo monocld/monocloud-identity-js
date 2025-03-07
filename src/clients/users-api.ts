@@ -925,6 +925,29 @@ export class UsersClient extends MonoCloudClientBase {
   }
 
   /**
+   * Retrieves a specific user session.
+   * @summary Get a user session
+   * @param {string} userId The ID of the user whose session should be retrieved.
+   * @param {string} sessionId The ID of the user session to be retrieved
+   * @returns UserSession - Successfully retrieved the user session
+   * @throws {MonoCloudException}
+   * @memberof UsersClient
+   *
+   */
+  public findUserSessionEndpoint(
+    userId: string,
+    sessionId: string
+  ): Promise<MonoCloudResponse<UserSession>> {
+    const url = `/users/{user_id}/sessions/{session_id}`
+      .replace(`{${'user_id'}}`, encodeURIComponent(String(userId)))
+      .replace(`{${'session_id'}}`, encodeURIComponent(String(sessionId)));
+
+    const request: MonoCloudRequest = { method: 'GET', url };
+
+    return this.processRequest<UserSession>(request);
+  }
+
+  /**
    * Revokes the specified session, effectively logging the user out of that session and invalidating any tokens associated with it.
    * @summary Revoke a session
    * @param {string} userId The ID of the user whose session should be revoked.
