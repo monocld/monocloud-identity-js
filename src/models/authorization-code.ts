@@ -33,7 +33,7 @@ export interface AuthorizationCode {
    * @type {string[]}
    * @memberof AuthorizationCode
    */
-  requested_scopes: string[];
+  authorized_scopes: string[];
   /**
    * The time (in Epoch) at which the code will expire.
    * @type {number}
