@@ -1,6 +1,6 @@
 {
   "name": "@monocloud/identity-js",
-  "version": "0.7.2",
+  "version": "0.7.3",
   "description": "MonoCloud Identity JavaScript SDK",
   "keywords": [
     "monocloud",

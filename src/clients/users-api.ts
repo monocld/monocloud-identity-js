@@ -934,7 +934,7 @@ export class UsersClient extends MonoCloudClientBase {
    * @memberof UsersClient
    *
    */
-  public findUserSessionEndpoint(
+  public findUserSession(
     userId: string,
     sessionId: string
   ): Promise<MonoCloudResponse<UserSession>> {
