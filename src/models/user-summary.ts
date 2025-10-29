@@ -96,11 +96,17 @@ export interface UserSummary {
    */
   password_updated_at?: number | null;
   /**
-   * Specifies whether the user has been locked out.
-   * @type {boolean}
+   * Specifies the time (in Epoch) at which the user will be unblocked.
+   * @type {number}
    * @memberof UserSummary
    */
-  blocked: boolean;
+  block_until?: number | null;
+  /**
+   * Total number of sign-in failures since the last sign-in was successful.
+   * @type {number}
+   * @memberof UserSummary
+   */
+  failure_count: number;
   /**
    * Total number of sign-in attempts.
    * @type {number}
